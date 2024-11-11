@@ -1,43 +1,40 @@
 // @ts-check
-import { defineConfig } from "astro/config";
-import starlight from "@astrojs/starlight";
-import tailwind from "@astrojs/tailwind";
+import { defineConfig } from 'astro/config';
+import starlight from '@astrojs/starlight';
+import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://doc.haramizu.com",
+  site: 'https://doc.haramizu.com',
   integrations: [
     starlight({
-      title: "Shinichi Haramizu",
-      defaultLocale: "root",
+      title: 'Shinichi Haramizu',
+      defaultLocale: 'root',
       locales: {
         root: {
-          label: "日本語",
-          lang: "ja",
+          label: '日本語',
+          lang: 'ja',
         },
         en: {
-          label: "English",
-          lang: "en",
+          label: 'English',
+          lang: 'en',
         },
       },
       social: {
-        github: "https://github.com/withastro/starlight",
+        github: 'https://github.com/withastro/starlight',
       },
       sidebar: [
         {
-          label: "Guides",
+          label: 'Astro',
           items: [
             // Each item here is one entry in the navigation menu.
-            { label: "Example Guide", slug: "guides/example" },
+            { label: 'Starlight', slug: 'astro/starlight' },
           ],
         },
-        {
-          label: "Reference",
-          autogenerate: { directory: "reference" },
-        },
       ],
-      customCss: ["./src/tailwind.css"],
+      customCss: ['./src/tailwind.css'],
     }),
     tailwind({ applyBaseStyles: false }),
   ],
 });
+
