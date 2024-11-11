@@ -1,7 +1,8 @@
 ---
-title: Starlight
+title: Using Starlight
 description: This document will show you how to set up a simple, customizable document site using the Starlight template in Astro.
 prev: false
+next: false
 sidebar:
   order: 1
 publishDate: 2024-11-11

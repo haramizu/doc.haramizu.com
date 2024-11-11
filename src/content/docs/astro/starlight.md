@@ -1,6 +1,10 @@
 ---
-title: Starlight
+title: Starlight の利用
 description: このドキュメントでは、Astro の Starlight テンプレートを利用して、簡単にカスタマイズ可能なドキュメントサイトを立ち上げる方法を紹介します。
+prev: false
+next: false
+sidebar:
+  order: 1
 publishDate: 2024-11-11
 lastUpdated: 2024-11-11
 ---
