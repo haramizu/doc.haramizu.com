@@ -1,0 +1,7 @@
+---
+title: Create Google Maps component
+description: このドキュメントでは、Sitecore XM Cloud で利用できる Google Map のコンポーネントの作成手順を紹介します。
+publishDate: 2024-11-11
+lastUpdated: 2024-11-11
+---
+

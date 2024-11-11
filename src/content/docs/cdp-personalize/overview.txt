@@ -1,0 +1,10 @@
+---
+title: Sitecore CDP + Personalize について
+description: このドキュメントでは、Sitecore XM Cloud で利用できる Google Map のコンポーネントの作成手順を紹介します。
+sidebar:
+  order: 1
+prev: false
+publishDate: 2024-11-11
+lastUpdated: 2024-11-11
+---
+
