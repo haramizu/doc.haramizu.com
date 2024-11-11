@@ -49,11 +49,11 @@ export default defineConfig({
           label: 'About',
           autogenerate: { directory: 'about' },
         },
-        // {
-        //   label: 'Cloud Portal',
-        //   collapsed: true,
-        //   autogenerate: { directory: 'cloud-portal' },
-        // },
+        {
+          label: 'Cloud Portal',
+          collapsed: true,
+          autogenerate: { directory: 'cloud-portal' },
+        },
         // {
         //   label: 'CDP + Personalize',
         //   collapsed: true,

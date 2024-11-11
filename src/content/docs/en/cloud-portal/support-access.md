@@ -1,5 +1,5 @@
 ---
-title: About Sitecore Cloud Portal
+title: Support Access
 description: ここでは Sitecore Cloud Portal に関する手順をまとめています。
 next: false
 ---
@@ -7,7 +7,7 @@ next: false
 Guides lead a user through a specific task they want to accomplish, often with a sequence of steps.
 Writing a good guide requires thinking about what your users are trying to do.
 
-## Further reading
+## 参考情報
 
-- Read [about how-to guides](https://diataxis.fr/how-to-guides/) in the Diátaxis framework
+- [Create a support case](https://doc.sitecore.com/portal/en/developers/sitecore-cloud-portal/create-a-support-case.html)
 
