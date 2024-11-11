@@ -4,6 +4,8 @@ description: This section summarizes the procedures related to the Sitecore Clou
 prev: false
 sidebar:
   order: 2
+publishDate: 2024-11-12
+lastUpdated: 2024-11-12
 ---
 
 Guides lead a user through a specific task they want to accomplish, often with a sequence of steps.

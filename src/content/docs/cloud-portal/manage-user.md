@@ -3,6 +3,8 @@ title: ユーザー管理
 description: ここでは Sitecore Cloud Portal に関する手順をまとめています。
 sidebar:
   order: 3
+publishDate: 2024-11-12
+lastUpdated: 2024-11-12
 ---
 
 Guides lead a user through a specific task they want to accomplish, often with a sequence of steps.
