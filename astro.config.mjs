@@ -5,27 +5,36 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [
-		starlight({
-			title: 'Docs with Tailwind',
-			social: {
-				github: 'https://github.com/withastro/starlight',
-			},
-			sidebar: [
-				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
-			],
-			customCss: ['./src/tailwind.css'],
-		}),
-		tailwind({ applyBaseStyles: false }),
-	],
+  site: 'https://doc.haramizu.com',
+  integrations: [
+    starlight({
+      title: 'Shinichi Haramizu',
+      defaultLocale: 'root',
+      locales: {
+        root: {
+          label: '日本語',
+          lang: 'ja',
+        },
+        en: {
+          label: 'English',
+          lang: 'en',
+        },
+      },
+      social: {
+        github: 'https://github.com/withastro/starlight',
+      },
+      sidebar: [
+        {
+          label: 'Astro',
+          items: [
+            // Each item here is one entry in the navigation menu.
+            { label: 'Starlight', slug: 'astro/starlight' },
+          ],
+        },
+      ],
+      customCss: ['./src/tailwind.css'],
+    }),
+    tailwind({ applyBaseStyles: false }),
+  ],
 });
+
