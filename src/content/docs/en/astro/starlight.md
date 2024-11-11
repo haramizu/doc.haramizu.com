@@ -1,6 +1,9 @@
 ---
 title: Starlight
 description: This document will show you how to set up a simple, customizable document site using the Starlight template in Astro.
+prev: false
+sidebar:
+  order: 1
 publishDate: 2024-11-11
 lastUpdated: 2024-11-11
 ---
@@ -54,24 +57,24 @@ The wizard will start and confirm the settings for the project you are creating.
 
 After the above settings, the project initialization will proceed automatically.
 
-![npm create astro](../../astro/assets/starlight01.png)
+![npm create astro](../../../../assets/astro/starlight/starlight01.png)
 
 Once the configuration is complete, you will see a message like the following.
 
-![Good luck out there](../../astro/assets/starlight02.png)
+![Good luck out there](../../../../assets/astro/starlight/starlight02.png)
 
 The project is now complete. As shown on the screen, when you navigate to the path and start it, you will see that it includes sample content.
 
-![docs with tailwind](../../astro/assets/starlight03.png)
+![docs with tailwind](../../../../assets/astro/starlight/starlight03.png)
 
 ### Deploy to Vercel
 
 Let's deploy the created project to GitHub and publish the site on Vercel. Assume that the project's code has already been uploaded to GitHub. First, log in to Vercel. Click on "New Project" to create a new project and specify the GitHub repository where the code is uploaded.
 
-![New Project](../../astro/assets/starlight04.png)
+![New Project](../../../../assets/astro/starlight/starlight04.png)
 You can see that the project is already specified as an Astro project. Click the Deploy button to execute the site build. After a while, the site will be up and running.
 
-![Congratulations](../../astro/assets/starlight05.png)
+![Congratulations](../../../../assets/astro/starlight/starlight05.png)
 From now on, updating the main repository will automatically update this site.
 
 ### Linking the Environment with Vercel CLI
@@ -143,7 +146,7 @@ After completing the above settings, copy the existing files to `/content/docs/e
 
 Once the file deployment is complete, a dropdown menu will be displayed, allowing you to switch languages.
 
-![Congratulations](../../astro/assets/starlight06.png)
+![Congratulations](../../../../assets/astro/starlight/starlight06.png)
 
 ## Creating Sitemap / robots.txt
 
