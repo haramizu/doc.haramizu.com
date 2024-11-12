@@ -10,7 +10,7 @@ lastUpdated: 2024-11-12
 
 The Sitecore Cloud Portal is a portal site for using Sitecore's SaaS products. Through this portal, you can configure and manage SaaS products. This section explains the role and basic functions of the Sitecore Cloud Portal.
 
-## Positioning of the Sitecore Cloud Portal
+## Introducing Sitecore Cloud Portal
 
 The Sitecore Cloud Portal, provided as the first access point for Sitecore's SaaS products, is an integrated portal that allows access to all contracted SaaS products. Through this portal, users can centrally configure and manage various SaaS products. Upon logging in, a dashboard of the contracted SaaS products is displayed, allowing easy access to usage and configuration options for each product. This enables efficient management and operation of multiple products.
 
