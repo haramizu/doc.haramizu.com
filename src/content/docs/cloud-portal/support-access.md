@@ -1,0 +1,27 @@
+---
+title: サポートアクセス
+description: この機能は、Sitecore のサポートエンジニアが技術的な問題を解決するために、Organization およびすべてのアプリに対してアクセスができるように設定をすることができます。
+next: false
+publishDate: 2024-11-12
+lastUpdated: 2024-11-12
+---
+
+Sitecore サポートエンジニアに、技術的な問題を解決するために組織およびすべてのアプリへのアクセスを許可します。アクセスを取り消すには、「アクセスを無効にする」をクリックします。
+
+## Sitecore Support Access
+
+この機能は、Sitecore Cloud Portal で Owner もしくは Admin が作業の権限を持っています。管理画面を開くと、デフォルトでは無効になっています。
+
+![Sitecore Support Access](../../../assets/cloud-portal/support-acess01.png)
+
+右上のボタンをクリックすると、サポートがアクセスできるようになります。
+
+![Sitecore Support Access](../../../assets/cloud-portal/support-acess02.png)
+
+この機能はいつでも有効、無効が可能となっているため、サポートによる技術的な調査が必要な場合は有効にして、サポートチケットを作成するという流れになります。
+
+## 参考情報
+
+- [Manage Sitecore Support access](https://doc.sitecore.com/portal/en/developers/sitecore-cloud-portal/manage-sitecore-support-access.html)
+- [Create a support case](https://doc.sitecore.com/portal/en/developers/sitecore-cloud-portal/create-a-support-case.html)
+

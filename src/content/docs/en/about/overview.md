@@ -16,6 +16,8 @@ As the first step, we would like to provide brief information on Sitecore Cloud 
 
 Sitecore Cloud Portal is a portal site for centralized management of Sitecore products. Here, you can configure and manage various services and user permissions. When using Sitecore products for the first time, it is recommended to access this portal and perform the necessary settings.
 
+- [Details](/en/cloud-portal/overview/)
+
 ### Sitecore CDP + Personalize
 
 Sitecore CDP (Customer Data Platform) and Personalize are tools that support the integration of customer data and the provision of personalized experiences. CDP is a platform for integrating and analyzing customer data collected from various channels. On the other hand, Personalize is a tool for providing optimized content and offers to individual customers based on that data. This allows for more personalized experiences for each customer.
