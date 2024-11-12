@@ -281,3 +281,8 @@ npm install --save-dev prettier-plugin-tailwindcss
 
 - https://github.com/haramizu/doc.haramizu.com/tree/starlight
 
+## 参考情報
+
+- [Astro](https://astro.build/)
+- [Starlight](https://starlight.astro.build/)
+- [Starlight on GitHub](https://github.com/withastro/starlight)

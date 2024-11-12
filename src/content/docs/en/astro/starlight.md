@@ -279,3 +279,8 @@ You can refer to the code up to this point from the following link.
 
 - https://github.com/haramizu/doc.haramizu.com/tree/starlight
 
+## References
+
+- [Astro](https://astro.build/)
+- [Starlight](https://starlight.astro.build/)
+- [Starlight on GitHub](https://github.com/withastro/starlight)
