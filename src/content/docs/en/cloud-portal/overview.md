@@ -17,9 +17,7 @@ The Sitecore Cloud Portal, provided as the first access point for Sitecore's Saa
 The following products can be used through the portal:
 
 - Sitecore XM Cloud
-- Sitecore Content Hub
 - Sitecore Content Hub ONE
-- Sitecore Search
 - Sitecore CDP
 - Sitecore Personalize
 - Sitecore Send
