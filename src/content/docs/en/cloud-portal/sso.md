@@ -128,15 +128,15 @@ If it is enabled as shown below, the SSO configuration is complete.
 
 You can obtain information about logging in with SSO from the Entra ID side. First, access the Microsoft Entra Admin Center and select the application you configured this time. The application has a sign-in log item.
 
-![Sign-in Log](../../../assets/cloud-portal/entralogin01en.png)
+![Sign-in Log](../../../../assets/cloud-portal/entralogin01en.png)
 
 After signing in to the Sitecore Cloud Portal with the corresponding account in SSO using the browser's private mode, you can check the logs to see if they have increased.
 
-![Sign-in Log](../../../assets/cloud-portal/entralogin02en.png)
+![Sign-in Log](../../../../assets/cloud-portal/entralogin02en.png)
 
 You can refer to the details of the latest sign-in by clicking the corresponding record.
 
-![Sign-in Log](../../../assets/cloud-portal/entralogin03en.png)
+![Sign-in Log](../../../../assets/cloud-portal/entralogin03en.png)
 
 The retention period for Entra ID sign-in data is described on the following page:
 
