@@ -33,13 +33,13 @@ Next, we will introduce the terms you need to understand when using the Sitecore
 
 The largest organizational unit when using the Sitecore Cloud Portal is referred to as an Organization. The logos of the contracted SaaS products are displayed in a list for this Organization. For example, the following screen shows all the tools assigned to the Organization named Sales Engineers 16.
 
-![Sitecore Cloud Portal](../../../../assets/cloud-portal/overview/overview01.png)
+![Sitecore Cloud Portal](../../../../assets/cloud-portal/overview01.png)
 
 For products provided in both production and non-production environments, `prod` is displayed under the icon for the production environment.
 
 You can belong to multiple Organizations. When logged in with an account that belongs to multiple Organizations, you can switch Organizations by clicking the icon in the upper left corner.
 
-![Switch Organization](../../../../assets/cloud-portal/overview/overview02.png)
+![Switch Organization](../../../../assets/cloud-portal/overview02.png)
 
 ### Team Members
 
@@ -57,7 +57,7 @@ This menu item is displayed only when you contract Sitecore XM Cloud. Clicking t
 
 Clicking this link displays a popup from the right side for adding users. The following screen appears when clicked.
 
-![Invite team members](../../../../assets/cloud-portal/overview/overview03.png)
+![Invite team members](../../../../assets/cloud-portal/overview03.png)
 
 From here, you can add email addresses (multiple addresses can be set simultaneously) and configure permissions for users. Administrators can use this item to quickly add users.
 
@@ -65,19 +65,19 @@ From here, you can add email addresses (multiple addresses can be set simultaneo
 
 Help provides a list of links to official documentation. It is a convenient link collection for quickly accessing official procedures when needed.
 
-![Invite team members](../../../../assets/cloud-portal/overview/overview04.png)
+![Invite team members](../../../../assets/cloud-portal/overview04.png)
 
 ### Create Support Ticket
 
 Clicking this item displays a contact form. From this screen, you can contact Sitecore support, and you will receive an inquiry number and other details via email immediately after registration. All subsequent interactions with support will be conducted via email. If you encounter issues such as configuration problems or malfunctions, you can contact support from here.
 
-![Invite team members](../../../../assets/cloud-portal/overview/overview05.png)
+![Invite team members](../../../../assets/cloud-portal/overview05.png)
 
 ## Admin Panel
 
 The top menu of the Sitecore Cloud Portal includes an Admin item. Clicking this allows access to screens for user management and Sitecore Cloud Portal settings.
 
-![Admin](../../../../assets/cloud-portal/overview/overview06.png)
+![Admin](../../../../assets/cloud-portal/overview06.png)
 
 Let's check each item.
 
@@ -91,13 +91,13 @@ The `Invite` button in the upper right allows you to add users, similar to the `
 
 This screen allows you to check the status of already sent invitation emails. For example, the following screen shows that an invitation email has been sent to Shota but has not yet been responded to, indicated as `Pending`.
 
-![Invitations](../../../../assets/cloud-portal/overview/overview07.png)
+![Invitations](../../../../assets/cloud-portal/overview07.png)
 
 ### Organization Management
 
 This item includes options that administrators can check for the Sitecore Cloud Portal Organization. For example, the Sitecore Cloud Portal provides a multi-factor authentication (MFA) mechanism, which can be enabled for user login.
 
-![Enable MFA](../../../../assets/cloud-portal/overview/overview08.png)
+![Enable MFA](../../../../assets/cloud-portal/overview08.png)
 
 Additionally, there are items for enabling single sign-on (SSO) for the Sitecore Cloud Portal. SSO settings are introduced in [another topic](/en/cloud-portal/sso/). Please refer to that for details.
 

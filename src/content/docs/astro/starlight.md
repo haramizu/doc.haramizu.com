@@ -58,25 +58,25 @@ npm create astro@latest -- --template starlight/tailwind
 
 上記の設定後、自動的にプロジェクトの初期化が進みます。
 
-![npm create astro](../../../assets/astro/starlight/starlight01.png)
+![npm create astro](../../../assets/astro/starlight01.png)
 
 設定が完了すると、以下のようなメッセージが表示されます。
 
-![Good luck out there](../../../assets/astro/starlight/starlight02.png)
+![Good luck out there](../../../assets/astro/starlight02.png)
 
 プロジェクトが完成しました。画面に表示されているように、パスに移動をして起動すると、サンプルのコンテンツが含まれた形で立ち上がっているのが分かります。
 
-![docs with tailwind](../../../assets/astro/starlight/starlight03.png)
+![docs with tailwind](../../../assets/astro/starlight03.png)
 
 ### Vercel に展開する
 
 作成をしたプロジェクトを GitHub に展開して、今回は Vercel にサイトを公開する手順を確認します。すでに GitHub にはプロジェクトのコードをアップロードしている状況と考えてください。早速 Vercel にログインをします。New project をクリックして、新しいプロジェクトを作成、アップロードをしている GitHub のリポジトリを指定します。
 
-![New Project](../../../assets/astro/starlight/starlight04.png)
+![New Project](../../../assets/astro/starlight04.png)
 
 すでに Astro のプロジェクトとして指定されているのが分かります。Deploy のボタンをクリックすると、サイトの Build を実行します。しばらくするとサイトが立ち上がります。
 
-![Congratulations](../../../assets/astro/starlight/starlight05.png)
+![Congratulations](../../../assets/astro/starlight05.png)
 
 今後は main リポジトリを更新すると、このサイトが更新されるようになりました。
 
@@ -149,7 +149,7 @@ export default defineConfig({
 
 ファイルの展開が終わったところで、以下のようにドロップダウンメニューが表示されて、言語を切り替えることが可能になりました。
 
-![Congratulations](../../../assets/astro/starlight/starlight06.png)
+![Congratulations](../../../assets/astro/starlight06.png)
 
 ## Sitemap / robots.txt の作成
 
