@@ -1,7 +1,6 @@
 ---
 title: Cloud Portal に参加する
 description: このページでは実際に Sitecore Cloud Portal に招待された後、ポータルにログインするところまで紹介をしています。
-prev: false
 sidebar:
   order: 2
 publishDate: 2024-11-12

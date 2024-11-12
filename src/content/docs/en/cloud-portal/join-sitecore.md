@@ -1,7 +1,6 @@
 ---
 title: Join Cloud Portal
 description: This page introduces the steps to log in to the Sitecore Cloud Portal after being invited.
-prev: false
 sidebar:
   order: 2
 publishDate: 2024-11-12
