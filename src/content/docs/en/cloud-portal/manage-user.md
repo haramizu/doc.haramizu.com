@@ -21,15 +21,15 @@ The Sitecore Cloud Portal provides three types of roles.
 
 The following screen shows the portal when a User is set to use one application.
 
-![Login to Sitecore Cloud Portal](../../../assets/cloud-portal/joinsitecore11.png)
+![Login to Sitecore Cloud Portal](../../../../assets/cloud-portal/joinsitecore11.png)
 
 The screen below shows the view when logged in as an Admin. All tools and portal management features are accessible. However, it is noted that inviting an Organization Owner is not possible.
 
-![Login to Sitecore Cloud Portal admin](../../../assets/cloud-portal/manageuser01.png)
+![Login to Sitecore Cloud Portal admin](../../../../assets/cloud-portal/manageuser01.png)
 
 When logged in as an Organization Owner, it is possible to add an Owner via Invitation.
 
-![Login to Sitecore Cloud Portal owner](../../../assets/cloud-portal/manageuser02.png)
+![Login to Sitecore Cloud Portal owner](../../../../assets/cloud-portal/manageuser02.png)
 
 As shown above, utilizing the three types of roles is important for smooth user addition and management during operations, as well as setting up administrators and determining Organization Owners.
 
@@ -41,7 +41,7 @@ For more details on the differences between roles, you can check the following p
 
 This section reviews the permission settings for users registered as Users in the Sitecore Cloud Portal. In addition to inviting users to use applications, you can also check user details. Select the target user from the Admin - Team members menu.
 
-![View detail](../../../assets/cloud-portal/manageuser03.png)
+![View detail](../../../../assets/cloud-portal/manageuser03.png)
 
 In this screen, you can set permissions for each application.
 
