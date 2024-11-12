@@ -24,6 +24,8 @@ Sitecore CDP (Customer Data Platform) and Personalize are tools that support the
 
 By utilizing these tools, companies can deepen their relationships with customers and conduct more effective marketing activities.
 
+- [Details](/en/cdp-personalize/overview/)
+
 ### Future Plans
 
 After creating certain guides for the above two, we will expand to the following products:

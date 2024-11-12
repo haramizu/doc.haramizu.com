@@ -39,30 +39,62 @@ export default defineConfig({
           collapsed: true,
           autogenerate: { directory: 'cloud-portal' },
         },
+        // {
+        //   label: `Content`,
+        //   collapsed: true,
+        //   items: [
+        //     {
+        //       label: 'XM Cloud',
+        //       collapsed: true,
+        //       autogenerate: { directory: 'xmc' },
+        //     },
+        //     {
+        //       label: 'Content Hub',
+        //       collapsed: true,
+        //       autogenerate: { directory: 'ch' },
+        //     },
+        //     {
+        //       label: 'Search',
+        //       collapsed: true,
+        //       autogenerate: { directory: 'search' },
+        //     },
+        //   ]
+        // },
         {
-          label: 'CDP + Personalize',
+          label: `Engamenent`,
           collapsed: true,
-          autogenerate: { directory: 'cdp-personalize' },
-        },
-        // {
-        //   label: 'Search',
-        //   collapsed: true,
-        //   autogenerate: { directory: 'search' },
-        // },
-        // {
-        //   label: 'XM Cloud',
-        //   collapsed: true,
-        //   autogenerate: { directory: 'xmcloud' },
-        // },
-        // {
-        //   label: 'Next.js',
-        //   collapsed: true,
-        //   autogenerate: { directory: 'nextjs' },
-        // },
-        {
-          label: 'Astro',
+          items: [
+            {
+              label: 'CDP + Personalize',
+              collapsed: true,
+              autogenerate: { directory: 'cdp-personalize' },
+            },
+            // {
+            //   label: 'Send',
+            //   collapsed: true,
+            //   autogenerate: { directory: 'send' },
+            // },
+          ]
+        }, {
+          label: `Technologies`,
           collapsed: true,
-          autogenerate: { directory: 'astro' },
+          items: [
+            {
+              label: 'Astro',
+              collapsed: true,
+              autogenerate: { directory: 'astro' },
+            },
+            // {
+            //   label: 'Next.js',
+            //   collapsed: true,
+            //   autogenerate: { directory: 'nextjs' },
+            // },
+            // {
+            //   label: 'Vercel',
+            //   collapsed: true,
+            //   autogenerate: { directory: 'vercel' },
+            // },
+          ]
         },
         {
           label: 'Update',
