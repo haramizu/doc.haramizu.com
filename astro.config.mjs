@@ -39,20 +39,11 @@ export default defineConfig({
           collapsed: true,
           autogenerate: { directory: 'cloud-portal' },
         },
-        // {
-        //   label: 'CDP + Personalize',
-        //   collapsed: true,
-        //   items: [
-        //     {
-        //       slug: 'cdp-personalize/overview',
-        //     },
-        //     {
-        //       label: 'Hands on',
-        //       collapsed: true,
-        //       autogenerate: { directory: 'cdp-personalize/hands-on' },
-        //     },
-        //   ],
-        // },
+        {
+          label: 'CDP + Personalize',
+          collapsed: true,
+          autogenerate: { directory: 'cdp-personalize' },
+        },
         // {
         //   label: 'Search',
         //   collapsed: true,
