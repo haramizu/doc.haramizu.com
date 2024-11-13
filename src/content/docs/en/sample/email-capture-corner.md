@@ -3,8 +3,8 @@ title: Personalize Sample - Email Capture Corner
 description: このドキュメントでは、Sitecore XM Cloud に関する Tips をお届けします
 prev: false
 next: false
-publishDate: 2024-11-13
-lastUpdated: 2024-11-13
+publishDate: 2024-11-15
+lastUpdated: 2024-11-15
 ---
 
 

@@ -4,8 +4,8 @@ description: このドキュメントでは、Sitecore XM Cloud に関する Tip
 next: false
 sidebar:
   order: 30
-publishDate: 2024-11-13
-lastUpdated: 2024-11-13
+publishDate: 2024-11-15
+lastUpdated: 2024-11-15
 ---
 
 

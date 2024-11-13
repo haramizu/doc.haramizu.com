@@ -3,8 +3,8 @@ title: SDK の活用
 description: このドキュメントでは、Sitecore CDP + Personalize を Web サイトと連携させる際に役立つ SDK について詳しく紹介します。これらの SDK を使用することで、顧客データの収集やパーソナライズされた体験の提供が容易になります。
 sidebar:
   order: 3
-publishDate: 2024-11-13
-lastUpdated: 2024-11-13
+publishDate: 2024-11-15
+lastUpdated: 2024-11-15
 ---
 
 このドキュメントでは、Sitecore CDP + Personalize を Web サイトと連携させる際に役立つ SDK について詳しく紹介します。これらの SDK を使用することで、顧客データの収集やパーソナライズされた体験の提供が容易になります。

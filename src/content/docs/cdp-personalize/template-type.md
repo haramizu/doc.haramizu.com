@@ -3,8 +3,8 @@ title: 標準テンプレート
 description: Sitecore Personalize の管理画面で選択可能な複数のテンプレートですが、２つのタイプのテンプレートが提供されていることが分かります。今回はこの違いを確認していきます。
 sidebar:
   order: 2
-publishDate: 2024-11-13
-lastUpdated: 2024-11-13
+publishDate: 2024-11-15
+lastUpdated: 2024-11-15
 ---
 
 Sitecore Personalize の管理画面では、複数のテンプレートが選択可能です。これらのテンプレートには、Boxever Library と Sitecore Library の２つのタイプが提供されています。それぞれのテンプレートには異なる特徴があり、HTML コードや CSS の記述に違いがあります。本記事では、これらのテンプレートの違いについて詳しく解説し、どのように使い分けるべきかを説明します。

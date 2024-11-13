@@ -3,8 +3,8 @@ title: Tampermonkey の使用
 description: 本ドキュメントでは、まだ Sitecore Personalize のタグを埋め込んでいないウェブサイトに対して、ブラウザの拡張機能を利用して実装する JavaScript のコードに関するテストを行う方法を紹介します。この方法を使用することで、開発中のサイトや非本番環境でのパーソナライズの動作確認が容易になります。
 sidebar:
   order: 4
-publishDate: 2024-11-13
-lastUpdated: 2024-11-13
+publishDate: 2024-11-15
+lastUpdated: 2024-11-15
 ---
 
 本ドキュメントでは、まだ Sitecore Personalize のタグを埋め込んでいないウェブサイトに対して、ブラウザの拡張機能を利用して実装する JavaScript のコードに関するテストを行う方法を紹介します。この方法を使用することで、開発中のサイトや非本番環境でのパーソナライズの動作確認が容易になります。
@@ -104,7 +104,7 @@ Corner Popup の設定に関しては、以下の項目を設定しました。
 // ==UserScript==
 // @name         Haramizu.com Sample 1
 // @namespace    http://tampermonkey.net/
-// @version      2024-11-13
+// @version      2024-11-14
 // @description  try to take over the world!
 // @author       You
 // @match        https://doc.sitecore.com/*
@@ -131,7 +131,7 @@ Corner Popup の設定に関しては、以下の項目を設定しました。
 // ==UserScript==
 // @name         Haramizu.com Sample 1
 // @namespace    http://tampermonkey.net/
-// @version      2024-11-13
+// @version      2024-11-14
 // @description  try to take over the world!
 // @author       You
 // @match        https://doc.sitecore.com/*

@@ -4,8 +4,8 @@ description: Introducing Sitecore CDP, a platform provided by Sitecore for centr
 sidebar:
   order: 1
 prev: false
-publishDate: 2024-11-13
-lastUpdated: 2024-11-13
+publishDate: 2024-11-15
+lastUpdated: 2024-11-15
 ---
 
 Introducing Sitecore CDP, a platform provided by Sitecore for centralized management of customer data, and Sitecore Personalize, a tool for improving customer experiences using the information accumulated in CDP.

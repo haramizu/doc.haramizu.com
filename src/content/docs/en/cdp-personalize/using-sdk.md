@@ -3,8 +3,8 @@ title: Using SDK
 description: This document provides detailed information on the SDKs that are useful when integrating Sitecore CDP + Personalize with your website. By using these SDKs, it becomes easier to collect customer data and provide personalized experiences.
 sidebar:
   order: 3
-publishDate: 2024-11-13
-lastUpdated: 2024-11-13
+publishDate: 2024-11-15
+lastUpdated: 2024-11-15
 ---
 
 This document provides detailed information on the SDKs that are useful when integrating Sitecore CDP + Personalize with your website. By using these SDKs, it becomes easier to collect customer data and provide personalized experiences.

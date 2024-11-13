@@ -3,8 +3,8 @@ title: Standard Templates
 description: In the Sitecore Personalize management screen, you can select from multiple templates, and you will find that two types of templates are provided. This time, we will check this difference.
 sidebar:
     order: 2
-publishDate: 2024-11-13
-lastUpdated: 2024-11-13
+publishDate: 2024-11-15
+lastUpdated: 2024-11-15
 ---
 
 In the Sitecore Personalize management screen, multiple templates can be selected. These templates are provided in two types: Boxever Library and Sitecore Library. Each template has different characteristics, and there are differences in HTML code and CSS descriptions. In this article, we will explain the differences between these templates in detail and how to use them properly.

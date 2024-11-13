@@ -3,8 +3,8 @@ title: Using Tampermonkey
 description: This document introduces how to test JavaScript code implementation using a browser extension on websites that have not yet embedded Sitecore Personalize tags. By using this method, it becomes easier to verify personalization on development sites and non-production environments.
 sidebar:
   order: 4
-publishDate: 2024-11-13
-lastUpdated: 2024-11-13
+publishDate: 2024-11-15
+lastUpdated: 2024-11-15
 ---
 
 This document introduces how to test JavaScript code implementation using a browser extension on websites that have not yet embedded Sitecore Personalize tags. By using this method, it becomes easier to verify personalization on development sites and non-production environments.
@@ -104,7 +104,7 @@ The prepared code is as follows:
 // ==UserScript==
 // @name         Haramizu.com Sample 1
 // @namespace    http://tampermonkey.net/
-// @version      2024-11-13
+// @version      2024-11-14
 // @description  try to take over the world!
 // @author       You
 // @match        https://doc.sitecore.com/*
@@ -131,7 +131,7 @@ This time, we will use the Sitecore Engage SDK for verification. The code create
 // ==UserScript==
 // @name         Haramizu.com Sample 1
 // @namespace    http://tampermonkey.net/
-// @version      2024-11-13
+// @version      2024-11-14
 // @description  try to take over the world!
 // @author       You
 // @match        https://doc.sitecore.com/*
