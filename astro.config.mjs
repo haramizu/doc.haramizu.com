@@ -60,22 +60,23 @@ export default defineConfig({
         //     },
         //   ]
         // },
+        // {
+        //   label: `Engamenent`,
+        //   collapsed: true,
+        //   items: [
+        //     {
+        //       label: 'CDP + Personalize',
+        //       collapsed: true,
+        //       autogenerate: { directory: 'cdp-personalize' },
+        //     },
+        //     {
+        //       label: 'Send',
+        //       collapsed: true,
+        //       autogenerate: { directory: 'send' },
+        //     },
+        //   ]
+        // },
         {
-          label: `Engamenent`,
-          collapsed: true,
-          items: [
-            {
-              label: 'CDP + Personalize',
-              collapsed: true,
-              autogenerate: { directory: 'cdp-personalize' },
-            },
-            // {
-            //   label: 'Send',
-            //   collapsed: true,
-            //   autogenerate: { directory: 'send' },
-            // },
-          ]
-        }, {
           label: `Technologies`,
           collapsed: true,
           items: [
