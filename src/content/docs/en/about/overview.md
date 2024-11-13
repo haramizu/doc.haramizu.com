@@ -3,12 +3,12 @@ title: About This Site
 description: This page introduces the role of this site and the type of information it provides.
 next: false
 publishDate: 2024-11-11
-lastUpdated: 2024-11-11
+lastUpdated: 2024-11-13
 ---
 
 Until now, various articles have been introduced on the blog, mainly as tips. From now on, we aim to compile information in a more systematic and practical manner as manuals. After considering expanding the blog system, we decided to publish a separate documentation site for easier creation and maintenance. This site provides detailed manuals and guides on various products and technologies to help users utilize the information more efficiently.
 
-## Target Products and Technologies
+## About the topics to be covered
 
 As the first step, we would like to provide brief information on Sitecore Cloud Portal and Sitecore CDP + Personalize, which are likely to be used first.
 
@@ -24,15 +24,29 @@ Sitecore CDP (Customer Data Platform) and Personalize are tools that support the
 
 By utilizing these tools, companies can deepen their relationships with customers and conduct more effective marketing activities.
 
-### Future Plans
+- [Details](/en/cdp-personalize/overview/)
 
-After creating certain guides for the above two, we will expand to the following products:
+### XM Cloud 
 
-- Content Hub
-- Search
-- XM Cloud
-- Next.js
+Under constructing
+
+### Content Hub 
+
+Under constructing
+
+### Search
+
+Under constructing
+
+### 関連技術
+
+The following topics will be covered in this section as related technologies.
+
+- Next.js (Under constructing)
+- Vercel (Under constructing)
 - Astro
+    - [Using Starlight](/en/astro/starlight/)
+
 
 ## Frameworks Used on This Site
 
@@ -40,3 +54,8 @@ This site itself is built using Astro / Starlight. The steps taken to create the
 
 - [Using Starlight](/en/astro/starlight)
 
+## What's new
+
+Updates to this site can be found at the following page
+
+- [What's new](/update/history/)
