@@ -1,6 +1,6 @@
 ---
-title: テンプレート一覧
-description: このドキュメントでは、Sitecore XM Cloud に関する Tips をお届けします
+title: サンプル
+description: このドキュメントでは、Sitecore Personalize を利用した時のテンプレートの動作確認ができます。
 next: false
 sidebar:
   order: 30
@@ -8,6 +8,11 @@ publishDate: 2024-11-15
 lastUpdated: 2024-11-15
 ---
 
+このページでは、Sitecore CDP + Personalize で提供しているサンプルの動作を確認できるように、実装済みのページ一覧を紹介しています。
+
+## パーソナライズ
+
+以下のページは該当するページにアクセスをするとパーソナライズを実行する、というサンプルになっています。
 
 - [Alert Bar](/sample/alert-bar/)
 - [Corner Popup](/sample/corner-popup/)
@@ -16,3 +21,8 @@ lastUpdated: 2024-11-15
 - [Notification Widget](/sample/notification-widget/)
 - [Popup takeover](/sample/popup-takeover/)
 - [Slidebar](/sample/slidebar/)
+
+## A/B テスト
+
+- [Slidebar Left and Right](/sample/ab-slidebar/)
+

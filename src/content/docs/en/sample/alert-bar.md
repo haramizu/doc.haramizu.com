@@ -7,5 +7,5 @@ publishDate: 2024-11-15
 lastUpdated: 2024-11-15
 ---
 
+- [Back to Sample list](/en/cdp-personalize/sample/)
 
-- [サンプル一覧に戻る](/cdp-personalize/sample/)

@@ -1,6 +1,6 @@
 ---
-title: Template list
-description: このドキュメントでは、Sitecore XM Cloud に関する Tips をお届けします
+title: Sample
+description: This document allows you to check the template behavior when using Sitecore Personalize.
 next: false
 sidebar:
   order: 30
@@ -8,11 +8,21 @@ publishDate: 2024-11-15
 lastUpdated: 2024-11-15
 ---
 
+This page introduces a list of implemented pages that allow you to check the behavior of the samples provided with Sitecore CDP + Personalize.
 
-- [Alert Bar](/sample/alert-bar/)
-- [Corner Popup](/sample/corner-popup/)
-- [Email Capture Bar](/sample/email-capture-bar/)
-- [Email Capture Corner](/sample/email-capture-corner/)
-- [Notification Widget](/sample/notification-widget/)
-- [Popup takeover](/sample/popup-takeover/)
-- [Slidebar](/sample/slidebar/)
+## Personalization
+
+The following pages are samples that execute personalization when you access the corresponding page.
+
+- [Alert Bar](/en/sample/alert-bar/)
+- [Corner Popup](/en/sample/corner-popup/)
+- [Email Capture Bar](/en/sample/email-capture-bar/)
+- [Email Capture Corner](/en/sample/email-capture-corner/)
+- [Notification Widget](/en/sample/notification-widget/)
+- [Popup takeover](/en/sample/popup-takeover/)
+- [Slidebar](/en/sample/slidebar/)
+
+## A/B Testing
+
+- [Slidebar Left and Right](/en/sample/ab-slidebar/)
+
