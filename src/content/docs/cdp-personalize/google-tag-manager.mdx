@@ -7,6 +7,8 @@ publishDate: 2024-11-15
 lastUpdated: 2024-11-15
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 Tampermonkey を利用してサイトにタグを埋め込まずに動作させる方法は確認できました。今回は、実際のサイトで利用するために、Google Tag Manager を利用して JavaScript を適用して動作するように設定を進めていきます。
 
 ## 前提条件
@@ -113,9 +115,15 @@ webPersonalization: true
 
 上記の画面はすでに Sitecore Personalize に関して設定が含まれている状況です。作成をする際には以下の手順となります。
 
+<Steps>
+
 1. Tags の一覧で New をクリックする
+
 2. Tag Configuration をクリック
+
 3. Custom HTML を選択
+
+</Steps>
 
 ![Create Custom HTML](../../../assets/personalize/gtm02.png)
 

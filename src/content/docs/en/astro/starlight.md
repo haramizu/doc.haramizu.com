@@ -8,7 +8,7 @@ publishDate: 2024-11-11
 lastUpdated: 2024-11-11
 ---
 
-import { FileTree, Steps } from '@astrojs/starlight/components'
+import { Steps } from '@astrojs/starlight/components'
 
 I created a blog using Next.js, but I wanted to create a documentation site that can be easily written in Markdown, published on GitHub, and receive feedback. Therefore, I considered several frameworks. In particular, I thought a framework that supports SSG and is easy to customize would be good, and I considered the following candidates:
 

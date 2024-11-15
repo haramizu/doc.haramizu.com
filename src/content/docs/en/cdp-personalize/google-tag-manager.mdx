@@ -7,6 +7,8 @@ publishDate: 2024-11-15
 lastUpdated: 2024-11-15
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 We have confirmed how to operate without embedding tags on the site using Tampermonkey. This time, we will proceed with the settings to apply JavaScript using Google Tag Manager for actual site use.
 
 ## Prerequisites
@@ -113,9 +115,15 @@ First, log in to Google Tag Manager and specify the target Workspace.
 
 The above screen already includes settings for Sitecore Personalize. When creating, follow these steps.
 
+<Steps>
+
 1. Click New in the list of Tags
+
 2. Click Tag Configuration
+
 3. Select Custom HTML
+
+</Steps>
 
 ![Create Custom HTML](../../../../assets/personalize/gtm02.png)
 

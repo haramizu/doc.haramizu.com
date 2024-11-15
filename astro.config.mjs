@@ -71,7 +71,7 @@ export default defineConfig({
               autogenerate: { directory: 'cdp-personalize' },
             },
             // {
-            //   label: 'Send / Moosend',
+            //   label: 'Moosend / Send',
             //   collapsed: true,
             //   autogenerate: { directory: 'send' },
             // },

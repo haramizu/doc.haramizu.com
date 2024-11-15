@@ -7,6 +7,8 @@ publishDate: 2024-11-15
 lastUpdated: 2024-11-15
 ---
 
+import { Steps } from '@astrojs/starlight/components'
+
 This document introduces how to test JavaScript code implementation using a browser extension on websites that have not yet embedded Sitecore Personalize tags. By using this method, it becomes easier to verify personalization on development sites and non-production environments.
 
 ## About Tampermonkey
@@ -53,14 +55,23 @@ When you open the screen, a toggle for developer mode is displayed. By checking 
 
 This time, we will use a template to display a popup for testing. First, create a test on the Sitecore Personalize screen.
 
+<Steps>
+
 1. Move to the Experience list page
+
 2. Click the Create button to create a Web Experience
+
 3. Create an Experience named Personalize Test
+
 4. Set the created Experience as follows:
     - Goal: Set to `Don't track performance`
     - Page Targeting: Standard `all pages`
+
 5. Click Create variant
+
 6. Select Corner Popup (Sitecore Library)
+
+</Steps>
 
 The settings for the Corner Popup are as follows:
 
