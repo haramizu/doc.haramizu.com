@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import tailwind from '@astrojs/tailwind';
+import starlightBlog from 'starlight-blog'
 
 const GTM_ID = process.env.GTM_ID;
 
@@ -60,22 +61,22 @@ export default defineConfig({
         //     },
         //   ]
         // },
-        // {
-        //   label: `Engamenent`,
-        //   collapsed: true,
-        //   items: [
-        //     {
-        //       label: 'CDP + Personalize',
-        //       collapsed: true,
-        //       autogenerate: { directory: 'cdp-personalize' },
-        //     },
-        //     {
-        //       label: 'Send',
-        //       collapsed: true,
-        //       autogenerate: { directory: 'send' },
-        //     },
-        //   ]
-        // },
+        {
+          label: `Engamenent`,
+          collapsed: true,
+          items: [
+            {
+              label: 'CDP + Personalize',
+              collapsed: true,
+              autogenerate: { directory: 'cdp-personalize' },
+            },
+            // {
+            //   label: 'Moosend / Send',
+            //   collapsed: true,
+            //   autogenerate: { directory: 'send' },
+            // },
+          ]
+        },
         {
           label: `Technologies`,
           collapsed: true,
@@ -123,6 +124,7 @@ export default defineConfig({
         },
       ],
       customCss: ['./src/tailwind.css'],
+      plugins: [starlightBlog()],
     }),
     tailwind({ applyBaseStyles: false }),
   ],
