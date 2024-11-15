@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import tailwind from '@astrojs/tailwind';
+import starlightBlog from 'starlight-blog'
 
 const GTM_ID = process.env.GTM_ID;
 
@@ -10,6 +11,7 @@ export default defineConfig({
   site: 'https://doc.haramizu.com',
   integrations: [
     starlight({
+      plugins: [starlightBlog()],
       title: 'Shinichi Haramizu',
       defaultLocale: 'root',
       locales: {
