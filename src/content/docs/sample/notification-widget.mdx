@@ -1,6 +1,6 @@
 ---
 title: サンプル - Notification Widget
-description: このドキュメントでは、Sitecore XM Cloud に関する Tips をお届けします
+description: このページでは、Sitecore Personalize で提供している標準テンプレートの Notification Widget のデモを確認することができます。
 prev: false
 next: false
 publishDate: 2024-11-15
@@ -44,6 +44,7 @@ HTML の中に含まれる変数は以下の通りです
 Notification Widget の HTML は以下のように設定されています。
 
 ```html
+// Notification.html
 <div id="pers-transition-card" class="animate-[[ Slide In From ]] position-[[Horizontal Position]]-[[Vertical Position]]">
 <div class="pers-transition-card__body">
   <p>
@@ -59,6 +60,7 @@ Notification Widget の HTML は以下のように設定されています。
 Notification Widget の JavaScript は以下のように設定されています。
 
 ```js
+// Notification.js
 // Adds a unique variant identifier to CSS when deployed to ensure CSS does not impact styling of other elements.
 var compiledCSS = Engage.templating.compile(variant.assets.css)(variant);
 var styleTag = document.getElementById('style-' + variant.ref);

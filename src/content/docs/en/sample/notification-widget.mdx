@@ -1,6 +1,6 @@
 ---
 title: Sample - Notification Widget
-description: This document provides tips on Sitecore XM Cloud
+description: On this page, you can check out a demo of the Notification Widget provided by Sitecore Personalize.
 prev: false
 next: false
 publishDate: 2024-11-15
@@ -44,6 +44,7 @@ The variables included in the HTML are as follows:
 The HTML for the Notification Widget is set as follows:
 
 ```html
+// Notification.html
 <div id="pers-transition-card" class="animate-[[ Slide In From ]] position-[[Horizontal Position]]-[[Vertical Position]]">
 <div class="pers-transition-card__body">
     <p>
@@ -59,6 +60,7 @@ The HTML for the Notification Widget is set as follows:
 The JavaScript for the Notification Widget is set as follows:
 
 ```js
+// Notification.js
 // Adds a unique variant identifier to CSS when deployed to ensure CSS does not impact styling of other elements.
 var compiledCSS = Engage.templating.compile(variant.assets.css)(variant);
 var styleTag = document.getElementById('style-' + variant.ref);
