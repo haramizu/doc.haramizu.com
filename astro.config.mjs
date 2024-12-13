@@ -144,22 +144,22 @@ export default defineConfig({
                 },
               ],
             },
-            // {
-            //   label: 'Hosting',
-            //   collapsed: true,
-            //   items: [
-            //     {
-            //       label: 'Vercel',
-            //       collapsed: true,
-            //       autogenerate: { directory: 'vercel' },
-            //     },
-            //     {
-            //       label: 'Netlify',
-            //       collapsed: true,
-            //       autogenerate: { directory: 'netlify' },
-            //     },
-            //   ],
-            // },
+            {
+              label: 'Hosting',
+              collapsed: true,
+              items: [
+                {
+                  label: 'Vercel',
+                  collapsed: true,
+                  autogenerate: { directory: 'vercel' },
+                },
+                // {
+                //   label: 'Netlify',
+                //   collapsed: true,
+                //   autogenerate: { directory: 'netlify' },
+                // },
+              ],
+            },
           ],
         },
         {
