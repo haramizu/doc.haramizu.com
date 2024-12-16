@@ -124,11 +124,6 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              label: 'Tools',
-              collapsed: true,
-              autogenerate: { directory: 'tools' },
-            },
-            {
               label: 'Frameworks',
               collapsed: true,
               items: [
@@ -144,22 +139,27 @@ export default defineConfig({
                 },
               ],
             },
-            // {
-            //   label: 'Hosting',
-            //   collapsed: true,
-            //   items: [
-            //     {
-            //       label: 'Vercel',
-            //       collapsed: true,
-            //       autogenerate: { directory: 'vercel' },
-            //     },
-            //     {
-            //       label: 'Netlify',
-            //       collapsed: true,
-            //       autogenerate: { directory: 'netlify' },
-            //     },
-            //   ],
-            // },
+            {
+              label: 'Hosting',
+              collapsed: true,
+              items: [
+                {
+                  label: 'Vercel',
+                  collapsed: true,
+                  autogenerate: { directory: 'vercel' },
+                },
+                // {
+                //   label: 'Netlify',
+                //   collapsed: true,
+                //   autogenerate: { directory: 'netlify' },
+                // },
+              ],
+            },
+            {
+              label: 'Tools',
+              collapsed: true,
+              autogenerate: { directory: 'tools' },
+            },
           ],
         },
         {
@@ -188,7 +188,12 @@ export default defineConfig({
         },
       ],
       customCss: ['./src/tailwind.css'],
-      plugins: [starlightBlog(), starlightImageZoom()],
+      plugins: [
+        starlightImageZoom({
+          showCaptions: true,
+        }),
+        starlightBlog({}),
+      ],
       lastUpdated: true,
     }),
     tailwind({ applyBaseStyles: false }),

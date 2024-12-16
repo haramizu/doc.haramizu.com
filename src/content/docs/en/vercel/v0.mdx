@@ -1,11 +1,12 @@
 ---
 title: v0 by Vercel
 description: This document provides tips about Vercel
-sidebar:
-  order: 4
 next: false
+sidebar:
+  badge:
+    text: Update
+    variant: success
 publishDate: 2024-12-02
-lastUpdated: 2024-12-02
 ---
 
 import { FileTree, Steps, LinkCard } from '@astrojs/starlight/components';
@@ -22,11 +23,11 @@ The v0 service, which we will cover this time, allows you to create web componen
 
 When you access the site, a simple page where you just need to enter commands is displayed as shown below.
 
-![v0 by Vercel](../../../../assets/nextjs/v001.png)
+![v0 by Vercel](../../../../assets/vercel/v001.png)
 
 You can input prompts on this screen to generate various UIs. Japanese UI is also available in the preview.
 
-![v0 by Vercel Japanese](../../../../assets/nextjs/v002.png)
+![v0 by Vercel Japanese](../../../../assets/vercel/v002.png)
 
 ### About Pricing Plans
 
@@ -46,29 +47,29 @@ _Create a list of 12 topics for the top page of a blog site, arranged in 4 colum
 
 The generated screen is as follows.
 
-![Blog Home](../../../../assets/nextjs/v003.png)
+![Blog Home](../../../../assets/vercel/v003.png)
 
 Add a project to save the generated component. Select Project from the menu on the left, and create a new project with New Project. This time, name it Blog.
 
-![Project](../../../../assets/nextjs/v004.png)
+![Project](../../../../assets/vercel/v004.png)
 
 After creating the project, go back to the component you created earlier and click the Deploy button in the upper right corner. The project to deploy will be displayed, so specify Blog.
 
-![Deploy](../../../../assets/nextjs/v005.png)
+![Deploy](../../../../assets/vercel/v005.png)
 
 After a while, the component you created will be deployed to Vercel.
 
-![Preview](../../../../assets/nextjs/v006.png)
+![Preview](../../../../assets/vercel/v006.png)
 
 As a result, you can check the page as shown below.
 
-![Preview](../../../../assets/nextjs/v007.png)
+![Preview](../../../../assets/vercel/v007.png)
 
 ### Checking the Generated Code
 
 You can check the code from the screen above by clicking the tab on the right.
 
-![Code](../../../../assets/nextjs/v008.png)
+![Code](../../../../assets/vercel/v008.png)
 
 The generated code is as follows.
 
@@ -220,7 +221,7 @@ npx create-next-app@14.2.18
 
 Create the project as follows.
 
-![Code](../../../../assets/nextjs/v009.png)
+![Code](../../../../assets/vercel/v009.png)
 
 To make it a Next.js project without sample content, delete the sample data. The changes are as follows.
 
@@ -248,7 +249,7 @@ Now, Next.js is ready.
 
 To use the components created with v0, there is a command provided in the management screen's upper right corner to add the code.
 
-![Add to Codebase](../../../../assets/nextjs/v010.png)
+![Add to Codebase](../../../../assets/vercel/v010.png)
 
 Execute the provided command at the top of the Next.js project. For the initial installation, the following prompts will appear.
 
@@ -261,7 +262,7 @@ Execute the provided command at the top of the Next.js project. For the initial 
 
 After the above settings, the project will be automatically updated.
 
-![Update project](../../../../assets/nextjs/v011.png)
+![Update project](../../../../assets/vercel/v011.png)
 
 The following files will be added or updated. The added files are highlighted.
 
@@ -296,11 +297,11 @@ npm run dev
 
 The result is as follows, displaying the screen created with v0.
 
-![Preview](../../../../assets/nextjs/v012.png)
+![Preview](../../../../assets/vercel/v012.png)
 
 When executed, the component generation is successful, but errors are also displayed.
 
-![Preview](../../../../assets/nextjs/v013.png)
+![Preview](../../../../assets/vercel/v013.png)
 
 This occurs because the images are not available in the public directory. Create the following SVG file.
 
@@ -344,7 +345,7 @@ export default nextConfig;
 
 Now the created image is displayed.
 
-![Preview](../../../../assets/nextjs/v014.png)
+![Preview](../../../../assets/vercel/v014.png)
 
 The sample code up to this point is available on GitHub.
 
@@ -362,23 +363,74 @@ This time, we will access the top page of the Sitecore XM Cloud documentation si
 
 1. Prepare the image
 
-   ![Sitecore Document XM Cloud](../../../../assets/nextjs/v015.png)
+   ![Sitecore Document XM Cloud](../../../../assets/vercel/v015.png)
 
 2. Upload it to the v0 prompt
 
-   ![upload to v0](../../../../assets/nextjs/v016.png)
+   ![upload to v0](../../../../assets/vercel/v016.png)
 
 3. Execute the component generation. After a while, the component will be generated, and you can check the component information and preview as shown below.
 
-   ![documents to v0](../../../../assets/nextjs/v017.png)
+   ![documents to v0](../../../../assets/vercel/v017.png)
 
 4. Open the preview to see that items like dropdown menus are also generated.
 
-   ![preview](../../../../assets/nextjs/v018.png)
+   ![preview](../../../../assets/vercel/v018.png)
 
 </Steps>
 
 Thus, it is possible to create components using images.
+
+## Sitecore Integration
+
+The components generated so far were based on Next.js, but now v0.dev can output results that have learned from Sitecore Documentation information. Simply add `#sitecore` to the prompt to support it.
+
+As shown above, you can easily obtain a prototype for use with Sitecore Headless SXA using v0.dev.
+
+<Steps>
+
+1. Add `#sitecore` to the prompt and execute it.
+
+   ```
+   Create carousel component #sitecore
+   ```
+
+   ![prompt](../../../../assets/vercel/v019.png)
+
+2. After a while, two files will be generated. Note that the preview cannot be executed as there is no Sitecore environment.
+
+   ![carousel component](../../../../assets/vercel/v020.png)
+
+   The generated code includes the following:
+
+   - Implementation of the carousel using react-slick
+   - Fields `image`, `title`, and `description` are assumed to be retrieved from Sitecore.
+
+   ```tsx
+   export type CarouselProps = ComponentProps & {
+     fields: {
+       items: {
+         fields: {
+           image: Field<string>;
+           title: Field<string>;
+           description: Field<string>;
+         };
+       }[];
+     };
+   };
+   ```
+
+3. Execute the following prompt additionally on the above result.
+
+   ```
+   change package to embla carousel #sitecore
+   ```
+
+4. After a while, the implementation of the created component was changed to the code based on Embla Carousel.
+
+   ![carousel component embla](../../../../assets/vercel/v021.png)
+
+</Steps>
 
 ## Summary
 
@@ -393,4 +445,8 @@ This time, we confirmed the procedure for generating sample components for use i
   href="https://github.com/haramizu/Next.js-sample/tree/main/examples/v0-sample-app"
   target="_blank"
 />
+
+## Update History
+
+- 2024-12-16 Added information about #sitecore support by v0.dev - [Sitecore Integration](#sitecore-integration)
 
