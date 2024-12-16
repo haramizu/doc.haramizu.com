@@ -2,6 +2,10 @@
 title: v0 by Vercel
 description: このドキュメントでは、Vercel に関する Tips をお届けします
 next: false
+sidebar:
+  badge:
+    text: 更新
+    variant: success
 publishDate: 2024-12-02
 lastUpdated: 2024-12-02
 ---
@@ -20,11 +24,11 @@ Vercel は様々なアプリをホスティングすることができるサー�
 
 サイトにアクセスをすると、以下のようにコマンドを入れるだけのシンプルなページが表示されます。
 
-![v0 by Vercel](../../../assets/nextjs/v001.png)
+![v0 by Vercel](../../../assets/vercel/v001.png)
 
 この画面にプロンプトを入力して、様々な UI を生成することが可能となります。なお、日本語の UI もプレビューで公開されています。
 
-![v0 by Vercel Japanese](../../../assets/nextjs/v002.png)
+![v0 by Vercel Japanese](../../../assets/vercel/v002.png)
 
 ### 料金プランについて
 
@@ -44,29 +48,29 @@ _ブログサイトのトップページとして 12個のトピックを大き�
 
 生成された結果の画面は以下のとおりです。
 
-![Blog Home](../../../assets/nextjs/v003.png)
+![Blog Home](../../../assets/vercel/v003.png)
 
 この生成したコンポーネントを保存するためのプロジェクトを追加します。左側に表示されているメニューの Project を選択、New Project で新しいプロジェクトを作成します。今回は Blog と名前をつけます。
 
-![Project](../../../assets/nextjs/v004.png)
+![Project](../../../assets/vercel/v004.png)
 
 プロジェクトを作成したあと、先ほど作成をしたコンポーネントに戻って、右上にある Deploy のボタンをクリックします。展開先となるプロジェクトが表示されますので、Blog を指定します。
 
-![Deploy](../../../assets/nextjs/v005.png)
+![Deploy](../../../assets/vercel/v005.png)
 
 しばらくすると、Vercel に作成をしたコンポーネントを展開します。
 
-![Preview](../../../assets/nextjs/v006.png)
+![Preview](../../../assets/vercel/v006.png)
 
 結果、以下のようにページの確認ができました。
 
-![Preview](../../../assets/nextjs/v007.png)
+![Preview](../../../assets/vercel/v007.png)
 
 ### 生成をしたコードの確認
 
 先ほどの画面から、コードの確認が可能となっています。右側のタブをクリックして確認します。
 
-![Code](../../../assets/nextjs/v008.png)
+![Code](../../../assets/vercel/v008.png)
 
 実際に生成されたコードは以下のようになります。
 
@@ -218,7 +222,7 @@ npx create-next-app@14.2.18
 
 今回は、以下のようにプロジェクトを作成します。
 
-![Code](../../../assets/nextjs/v009.png)
+![Code](../../../assets/vercel/v009.png)
 
 コンテンツが含まれない Next.js のプロジェクトにするために、サンプルのデータを削除します。変更点としては以下の２つのファイルからサンプルのコードを削除します。
 
@@ -246,7 +250,7 @@ export default function Home() {
 
 v0 で作成をしたコンポーネントを利用しての管理画面の右上に、コードを追加するためのコマンドが用意されています。
 
-![Add to Codebase](../../../assets/nextjs/v010.png)
+![Add to Codebase](../../../assets/vercel/v010.png)
 
 ここで提供されるコマンドを、Next.js のプロジェクトのトップで実行してください。初回インストールでは、以下のような形で追加方法に関しての確認が動きます。
 
@@ -259,7 +263,7 @@ v0 で作成をしたコンポーネントを利用しての管理画面の右�
 
 上記の設定後、自動的にプロジェクトがアップデートされます。
 
-![Update project](../../../assets/nextjs/v011.png)
+![Update project](../../../assets/vercel/v011.png)
 
 上記のコマンドを実行すると、以下のファイルが追加、更新されます。追加されているファイルはハイライトで表示しています。
 
@@ -294,11 +298,11 @@ npm run dev
 
 実行結果は以下のように、v0 で作成した画面が表示されました。
 
-![Preview](../../../assets/nextjs/v012.png)
+![Preview](../../../assets/vercel/v012.png)
 
 実行すると、コンポーネントの生成には成功していますが、エラーも表示されています。
 
-![Preview](../../../assets/nextjs/v013.png)
+![Preview](../../../assets/vercel/v013.png)
 
 これは public に対して画像が用意されていないため発生しています。そこで、以下の SVG ファイルを作成します。
 
@@ -342,7 +346,7 @@ export default nextConfig;
 
 これで作成をした画像が表示されるようになりました。
 
-![Preview](../../../assets/nextjs/v014.png)
+![Preview](../../../assets/vercel/v014.png)
 
 ここまでのサンプルのコードは、以下の GitHub にて公開をしました。
 
@@ -360,19 +364,19 @@ export default nextConfig;
 
 1. 画像の準備をします
 
-   ![Sitecore Document XM Cloud](../../../assets/nextjs/v015.png)
+   ![Sitecore Document XM Cloud](../../../assets/vercel/v015.png)
 
 2. v0 のプロンプトに対してアップロードします
 
-   ![upload to v0](../../../assets/nextjs/v016.png)
+   ![upload to v0](../../../assets/vercel/v016.png)
 
 3. コンポーネントの生成を実行します。しばらくすると、コンポーネントが生成されて、以下のようにコンポーネントに関する情報とプレビューを確認することができるようになります。
 
-   ![documents to v0](../../../assets/nextjs/v017.png)
+   ![documents to v0](../../../assets/vercel/v017.png)
 
 4. プレビューを開くと、ドロップダウンメニューなどの項目も生成されていることがわかります。
 
-   ![preview](../../../assets/nextjs/v018.png)
+   ![preview](../../../assets/vercel/v018.png)
 
 </Steps>
 
