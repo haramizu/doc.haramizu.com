@@ -124,11 +124,6 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              label: 'Tools',
-              collapsed: true,
-              autogenerate: { directory: 'tools' },
-            },
-            {
               label: 'Frameworks',
               collapsed: true,
               items: [
@@ -159,6 +154,11 @@ export default defineConfig({
                 //   autogenerate: { directory: 'netlify' },
                 // },
               ],
+            },
+            {
+              label: 'Tools',
+              collapsed: true,
+              autogenerate: { directory: 'tools' },
             },
           ],
         },
