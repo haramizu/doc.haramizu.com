@@ -148,11 +148,11 @@ export default defineConfig({
                   collapsed: true,
                   autogenerate: { directory: 'vercel' },
                 },
-                // {
-                //   label: 'Netlify',
-                //   collapsed: true,
-                //   autogenerate: { directory: 'netlify' },
-                // },
+                {
+                  label: 'Netlify',
+                  collapsed: true,
+                  autogenerate: { directory: 'netlify' },
+                },
               ],
             },
             {
