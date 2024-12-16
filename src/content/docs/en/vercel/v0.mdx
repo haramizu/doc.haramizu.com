@@ -381,6 +381,57 @@ This time, we will access the top page of the Sitecore XM Cloud documentation si
 
 Thus, it is possible to create components using images.
 
+## Sitecore Integration
+
+The components generated so far were based on Next.js, but now v0.dev can output results that have learned from Sitecore Documentation information. Simply add `#sitecore` to the prompt to support it.
+
+As shown above, you can easily obtain a prototype for use with Sitecore Headless SXA using v0.dev.
+
+<Steps>
+
+1. Add `#sitecore` to the prompt and execute it.
+
+   ```
+   Create carousel component #sitecore
+   ```
+
+   ![prompt](../../../../assets/vercel/v019.png)
+
+2. After a while, two files will be generated. Note that the preview cannot be executed as there is no Sitecore environment.
+
+   ![carousel component](../../../../assets/vercel/v020.png)
+
+   The generated code includes the following:
+
+   - Implementation of the carousel using react-slick
+   - Fields `image`, `title`, and `description` are assumed to be retrieved from Sitecore.
+
+   ```tsx
+   export type CarouselProps = ComponentProps & {
+     fields: {
+       items: {
+         fields: {
+           image: Field<string>;
+           title: Field<string>;
+           description: Field<string>;
+         };
+       }[];
+     };
+   };
+   ```
+
+3. Execute the following prompt additionally on the above result.
+
+   ```
+   change package to embla carousel #sitecore
+   ```
+
+4. After a while, the implementation of the created component was changed to the code based on Embla Carousel.
+
+   ![carousel component embla](../../../../assets/vercel/v021.png)
+
+</Steps>
+
 ## Summary
 
 This time, we confirmed the procedure for generating sample components for use in Next.js using v0. It is very convenient to be able to generate not only from prompts but also from images.
@@ -394,4 +445,8 @@ This time, we confirmed the procedure for generating sample components for use i
   href="https://github.com/haramizu/Next.js-sample/tree/main/examples/v0-sample-app"
   target="_blank"
 />
+
+## Update History
+
+- 2024-12-16 Added information about #sitecore support by v0.dev - [Sitecore Integration](#sitecore-integration)
 

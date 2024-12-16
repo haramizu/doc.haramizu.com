@@ -382,6 +382,57 @@ export default nextConfig;
 
 このように、画像を利用してコンポーネントの作成も可能です。
 
+## Sitecore 連携について
+
+上記までの生成しているコンポーネントは Next.js を前提としていましたが、v0.dev が Sitecore Documentation の情報を学習した形の結果を出力することが可能となりました。プロンプトに対して `#sitecore` を追加するだけで対応します。
+
+<Steps>
+
+1. プロンプトに対して `#sitecore` をつけて実行する
+
+   ```
+   Create caroucel component #sitecore
+   ```
+
+   ![prompt](../../../assets/vercel/v019.png)
+
+2. しばらくすると、２つのファイルが生成されます。なお、Sitecore の環境がないためプレビューは実行できません。
+
+   ![caroucel component](../../../assets/vercel/v020.png)
+
+   コードを抜粋すると以下のようなコードが生成されています。
+
+   - react-slick を利用してカルーセルの実装
+   - Sitecore から取得するフィールドとして `image`、`title`、`description` を想定。
+
+   ```tsx
+   export type CarouselProps = ComponentProps & {
+     fields: {
+       items: {
+         fields: {
+           image: Field<string>;
+           title: Field<string>;
+           description: Field<string>;
+         };
+       }[];
+     };
+   };
+   ```
+
+3. 上記の結果に対して、以下のプロンプトを追加で実行します。
+
+   ```
+   change package to embla carousel #sitecore
+   ```
+
+4. しばらくすると、作成されていたコンポーネントの実装が Embla Caroucel をベースのコードに変更されました。
+
+   ![caroucel component embla](../../../assets/vercel/v021.png)
+
+</Steps>
+
+上記のように、v0.dev を利用して Sitecore Headless SXA で利用するためのプロトタイプを簡単に手に入れることができるようになりました。
+
 ## まとめ
 
 今回は v0 を利用して Next.js で利用するコンポーネントのサンプルを生成する手順を確認しました。プロンプトからの生成だけでなく、画像から生成することができるのは非常に便利です。
@@ -395,4 +446,8 @@ export default nextConfig;
   href="https://github.com/haramizu/Next.js-sample/tree/main/examples/v0-sample-app"
   target="_blank"
 />
+
+## 更新履歴
+
+- 2024-12-16 v0.dev による #sitecore 対応について追記 - [Sitecore 連携について](#sitecore-連携について)
 
