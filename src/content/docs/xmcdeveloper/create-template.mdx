@@ -438,9 +438,9 @@ local-containers\docker-compose.override.yml の更新
       - nodejs
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.rendering-secure-nextjs.entrypoints=websecure"
-      - "traefik.http.routers.rendering-secure-nextjs.rule=Host(`${RENDERING_HOST_TAILWIND}`)"
-      - "traefik.http.routers.rendering-secure-nextjs.tls=true"
+      - "traefik.http.routers.rendering-secure-tailwind.entrypoints=websecure"
+      - "traefik.http.routers.rendering-secure-tailwind.rule=Host(`${RENDERING_HOST_TAILWIND}`)"
+      - "traefik.http.routers.rendering-secure-tailwind.tls=true"
 
   # Mount the Traefik configuration and certs.
   traefik:
