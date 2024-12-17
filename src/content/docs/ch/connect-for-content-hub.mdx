@@ -297,9 +297,10 @@ COPY --from=tools C:\tools C:\tools
 
 ### 環境変数を設定する
 
-続いてローカルで動作する Docker の環境に対して、クラウドの時と同様の設定を追加します。下記の値に関しては、
+続いてローカルで動作する Docker の環境に対して、クラウドの時と同様の設定を追加します。下記の値に関しては、すでに上記で利用している値を設定してください。
 
-```title="local-containers.env"
+```
+// .env
 SITECORE_DAM_ENABLED=Yes
 Sitecore_DAM_ContentHub=ClientId={client_id};ClientSecret={client_secret};UserName={username};Password={password};URI={uri};
 Sitecore_DAM_SearchPage={Sitecore Content Hub search page URI}
