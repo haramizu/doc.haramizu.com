@@ -1,13 +1,17 @@
 ---
 title: テンプレートの作成
 description: このサイトで紹介をしている情報が含まれたテンプレートサイトとして、tailwind-starter を提供しています。このプロジェクトは標準テンプレート以外に、いくつか変更点を適用しているため、ここではその内容について紹介をします。
+prev: false
+next: false
 sidebar:
   order: 1
   badge:
-    text: 新着
+    text: 更新
+    variant: success
 publishDate: 2024-12-09
-lastUpdated: 2024-12-11
 ---
+
+https://blog.haramizu.com/ja-JP/blog/2023/12/21/advent-calendar-2023-day-21
 
 import { Steps, LinkCard, Aside, FileTree } from '@astrojs/starlight/components';
 import { YouTube } from 'astro-embed';
@@ -355,4 +359,209 @@ Sitecore XM Cloud 全体で持っているリソースに対しては適用さ�
 今回は言語が正しくインポートできるかの検証のために、ユーザーの言語を切り替えるのではなく、URL でここでは切り替えます。CMS にアクセスしている URL の最後の言語を `&sc_lang=ja-JP` に変更をします。すると、以下のように日本語のリソースで表示されました。
 
 ![Content Editor](../../../assets/xmc/createproject10.png)
+
+## 新しいプロジェクトを追加する
+
+### Docker 環境
+
+.env.template に以下の項目を追加。
+
+```
+// .env.template
+RENDERING_HOST_TAILWIND=tailwind.xmc-starter-js.localhost
+RENDERING_HOST_INTERNAL_TAILWIND_URI=http://rendering-tailwind:3000
+```
+
+dockerfile の追加
+
+```dockerfile
+// local-containers\docker\build\rendering-tailwind\Dockerfile
+# escape=`
+
+#
+# Development-only image for running Next.js in a containerized environment.
+# Assumes that the Next.js rendering host source is mounted to c:\app.
+#
+
+ARG PARENT_IMAGE
+FROM ${PARENT_IMAGE} as debug
+
+USER ContainerAdministrator
+
+WORKDIR /app
+
+EXPOSE 3000
+#ENTRYPOINT "npm install && npm install next@canary && npm run start:connected"
+ENTRYPOINT "npm install && npm run start:connected"
+```
+
+```yml {14}
+// local-containers\docker-compose.yml
+
+  cm:
+    isolation: ${ISOLATION}
+    image: ${SITECORE_DOCKER_REGISTRY}sitecore-xmcloud-cm:${SITECORE_VERSION}
+    depends_on:
+      mssql:
+        condition: service_healthy
+      solr-init:
+        condition: service_started
+    environment:
+      host: ${CM_HOST}
+      RENDERING_HOST_INTERNAL_URI: ${RENDERING_HOST_INTERNAL_URI}
+      RENDERING_HOST_INTERNAL_TAILWIND_URI: ${RENDERING_HOST_INTERNAL_TAILWIND_URI}
+
+```
+
+local-containers\docker-compose.override.yml の更新
+
+```yml
+// local-containers\docker-compose.override.yml
+  rendering-tailwind:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-rendering-tailwind:${VERSION:-latest}
+    build:
+      context: ./docker/build/rendering-tailwind
+      target: ${BUILD_CONFIGURATION}
+      args:
+        PARENT_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-nodejs:${VERSION:-latest}
+    volumes:
+      - ../headapps/tailwind-starter:C:\app
+    environment:
+      SITECORE_API_HOST: "http://cm"
+      NEXTJS_DIST_DIR: ".next-container"
+      PUBLIC_URL: "https://${RENDERING_HOST_TAILWIND}"
+      JSS_EDITING_SECRET: ${JSS_EDITING_SECRET}
+      SITECORE_API_KEY: "${SITECORE_API_KEY_APP_STARTER}"
+      DISABLE_SSG_FETCH: ${DISABLE_SSG_FETCH}
+    depends_on:
+      - cm
+      - nodejs
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rendering-secure-nextjs.entrypoints=websecure"
+      - "traefik.http.routers.rendering-secure-nextjs.rule=Host(`${RENDERING_HOST_TAILWIND}`)"
+      - "traefik.http.routers.rendering-secure-nextjs.tls=true"
+
+  # Mount the Traefik configuration and certs.
+  traefik:
+    volumes:
+      - ./docker/traefik:C:/etc/traefik
+    depends_on:
+      - rendering-nextjs
+      - rendering-tailwind
+
+  cm:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xmcloud-cm:${VERSION:-latest}
+    build:
+      context: ./docker/build/cm
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xmcloud-cm:${SITECORE_VERSION}
+        TOOLS_IMAGE: ${TOOLS_IMAGE}:${SITECORE_VERSION}
+    volumes:
+      - ${LOCAL_DEPLOY_PATH}\platform:C:\deploy
+      - ${LOCAL_DATA_PATH}\cm:C:\inetpub\wwwroot\App_Data\logs
+      - ${HOST_LICENSE_FOLDER}:c:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: c:\license\license.xml
+      RENDERING_HOST_INTERNAL_URI: "http://rendering-nextjs:3000"
+      RENDERING_HOST_INTERNAL_TAILWIND_URI: "http://rendering-tailwind:3000"
+      SITECORE_JSS_EDITING_SECRET: ${JSS_EDITING_SECRET}
+```
+
+Rendering Item の追加
+
+```yml
+// authoring\items\nextjs-starter\TailwindRenderingHost\Tailwind.yml
+---
+ID: 'f70859ba-ddd7-459e-a3f5-67e5cdf2afbe'
+Parent: '895e25c4-12b2-4b2c-8233-82f3b79eef53'
+Template: 'bc71d442-3e4f-46ba-887c-746e54f9bb83'
+Path: /sitecore/system/Settings/Services/Rendering Hosts/Tailwind
+SharedFields:
+  - ID: '94470b31-e282-4d8d-bc54-85689efb294c'
+    Hint: ServerSideRenderingEngineConfigUrl
+    Value: 'http://rendering-tailwind:3000/api/editing/config'
+  - ID: 'e32c1801-79b3-4fc1-a9c4-3c6e6c2968ae'
+    Hint: ServerSideRenderingEngineApplicationUrl
+    Value: 'http://rendering-tailwind:3000'
+  - ID: 'fc76919b-0d7c-4732-865d-2af795fb38a4'
+    Hint: ServerSideRenderingEngineEndpointUrl
+    Value: 'http://rendering-tailwind:3000/api/editing/render'
+Languages:
+  - Language: en
+    Versions:
+      - Version: 1
+        Fields:
+          - ID: '25bed78c-4957-4165-998a-ca1b52f67497'
+            Hint: __Created
+            Value: 20220614T103029Z
+          - ID: '5dd74568-4d4b-44c1-b513-0af5f4cda34f'
+            Hint: __Created by
+            Value: |
+              sitecore\Admin
+          - ID: '8cdc337e-a112-42fb-bbb4-4143751e123f'
+            Hint: __Revision
+            Value: '61abcef1-54b6-417c-809c-b1ecc212b542'
+          - ID: 'badd9cf9-53e0-4d0c-bcc0-2d784c282f6a'
+            Hint: __Updated by
+            Value: |
+              sitecore\xmc-e2e-admin@sitecore.com
+          - ID: 'd9cf14b1-fa16-4ba6-9288-e8a174d4d522'
+            Hint: __Updated
+            Value: 20241217T070520Z
+```
+
+追加する
+
+```json {13-17}
+// authoring\items\nextjs-starter.module.json
+{
+  "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
+  "namespace": "nextjs-starter",
+  "items": {
+    "path": "nextjs-starter",
+    "includes": [
+      {
+        "name": "DefaultRenderingHost",
+        "path": "/sitecore/system/Settings/Services/Rendering Hosts/Default",
+        "scope": "singleItem"
+      },
+      {
+        "name": "TailwindRenderingHost",
+        "path": "/sitecore/system/Settings/Services/Rendering Hosts/Tailwind",
+        "scope": "singleItem"
+      }
+    ]
+  }
+}
+```
+
+### XM Cloud
+
+tailwindstarter を追加。
+
+```json
+// xmcloud.build.json
+{
+  "renderingHosts": {
+    "nextjsstarter": {
+
+    ...
+
+    },
+    "tailwindstarter": {
+      "path": "./headapps/tailwind-starter",
+      "nodeVersion": "22.11.0",
+      "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
+      "enabled": true,
+      "type": "sxa",
+      "buildCommand": "build",
+      "runCommand": "next:start"
+    }
+```
+
+## 更新履歴
+
+- **2024-12-18** XM Cloud Front End Application Starter Kits が更新されたため以下の変更を行いました。
+  - nextjs-starter および spa-starter と並行して tailwind-starter が動くようにしました
 
