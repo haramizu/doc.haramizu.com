@@ -2,6 +2,7 @@
 title: Sitecore Connect for Content Hub
 description: This document introduces the steps to integrate Sitecore Content Hub DAM in a Sitecore XM Cloud environment.
 publishDate: 2024-12-09
+lastUpdated: 2024-12-11
 sidebar:
   order: 30
   badge:
@@ -293,9 +294,10 @@ This completes the changes to the CSP.
 
 ### Setting Environment Variables
 
-Next, add the same settings as in the cloud to the local Docker environment. The following values are:
+Next, add the same settings to the local Docker environment as you did for the cloud. Use the values already used above for the following settings.
 
-```.env title="local-containers.env"
+```
+// .env
 SITECORE_DAM_ENABLED=Yes
 Sitecore_DAM_ContentHub=ClientId={client_id};ClientSecret={client_secret};UserName={username};Password={password};URI={uri};
 Sitecore_DAM_SearchPage={Sitecore Content Hub search page URI}
