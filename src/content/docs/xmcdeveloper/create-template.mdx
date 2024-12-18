@@ -71,7 +71,7 @@ Docker 環境で動作させる .env ファイルには、その環境固有の�
 
 3. .env ファイルを削除するために、一度 .env および .env.template の変更をコミットします
 
-   ![Commit](../../../assets/xmc/createproject01.png)
+   ![Commit](../../../assets/xmcdeveloper/createproject01.png)
 
 4. .gitignore を更新します
 
@@ -115,7 +115,7 @@ cd local-containers
 
 以下のように、.env ファイルが作成されて、環境が整います。
 
-![.env Copy](../../../assets/xmc/createproject02.png)
+![.env Copy](../../../assets/xmcdeveloper/createproject02.png)
 
 コンテナを起動するときは、以下のコマンドを管理者権限のある Terminal で実行します。
 
@@ -242,13 +242,13 @@ COPY --from=tools C:\tools C:\tools
 
 2. 右下のアイコンをクリックして Core に切り替えます
 
-   ![core database](../../../assets/xmc/createproject03.png)
+   ![core database](../../../assets/xmcdeveloper/createproject03.png)
 
 3. Control Panel から Localization - `Add a new language` を選択します。
 
 4. Japanese - Japan を追加します
 
-   ![Add a new language](../../../assets/xmc/createproject04.png)
+   ![Add a new language](../../../assets/xmcdeveloper/createproject04.png)
 
 5. 言語を追加した後、Desktop を起動してデータベースを master に戻します。
 
@@ -256,7 +256,7 @@ COPY --from=tools C:\tools C:\tools
 
 上記の手順で、日本語リソースを選択することが可能となります。ユーザーのプロファイルで、表示言語を日本語にすると、ローカルの環境では日本語のデータが表示されるようになりました。
 
-![Launchpad Japanese](../../../assets/xmc/createproject05.png)
+![Launchpad Japanese](../../../assets/xmcdeveloper/createproject05.png)
 
 ### XM Cloud 環境に適用
 
@@ -322,7 +322,7 @@ XM Cloud の環境に対してリソースファイルを適用するために�
 
 上記の設定を反映させたプロジェクトを、XM Cloud Deploy と連携をしてインスタンスを Build すると、リソースファイルを含む形で展開していることを確認することが出来ます。
 
-![copy resource file](../../../assets/xmc/createproject06.png)
+![copy resource file](../../../assets/xmcdeveloper/createproject06.png)
 
 新しい環境が起動したあと、以下の手順で日本語リソースを追加していきます。
 
@@ -330,21 +330,21 @@ XM Cloud の環境に対してリソースファイルを適用するために�
 
 1. サイト一覧を表示する Sites のメニューから、Settings を選択します。
 
-   ![Settings](../../../assets/xmc/createproject07.png)
+   ![Settings](../../../assets/xmcdeveloper/createproject07.png)
 
 2. 左側のメニューの Desktop を開きます
 
-   ![Desktop](../../../assets/xmc/createproject08.png)
+   ![Desktop](../../../assets/xmcdeveloper/createproject08.png)
 
 3. 右下のアイコンをクリックして Core に切り替えます
 
-   ![core database](../../../assets/xmc/createproject03.png)
+   ![core database](../../../assets/xmcdeveloper/createproject03.png)
 
 4. Control Panel から Localization - `Add a new language` を選択します。
 
 5. Japanese - Japan を追加します
 
-   ![Add a new language](../../../assets/xmc/createproject04.png)
+   ![Add a new language](../../../assets/xmcdeveloper/createproject04.png)
 
 6. 言語を追加した後、Desktop を起動してデータベースを master に戻します。
 
@@ -354,214 +354,259 @@ XM Cloud の環境に対してリソースファイルを適用するために�
 
 Sitecore XM Cloud 全体で持っているリソースに対しては適用されませんが、共通のツールとなる Content Editor で日本語が表示されていることを確認できます。まず、Sites のメニューの Content の下にある Content Editor を開きます。
 
-![Content Editor](../../../assets/xmc/createproject09.png)
+![Content Editor](../../../assets/xmcdeveloper/createproject09.png)
 
 今回は言語が正しくインポートできるかの検証のために、ユーザーの言語を切り替えるのではなく、URL でここでは切り替えます。CMS にアクセスしている URL の最後の言語を `&sc_lang=ja-JP` に変更をします。すると、以下のように日本語のリソースで表示されました。
 
-![Content Editor](../../../assets/xmc/createproject10.png)
+![Content Editor](../../../assets/xmcdeveloper/createproject10.png)
 
-## 新しいプロジェクトを追加する
+## プロジェクトの追加
+
+既存の Next.js Starter Kit および Angularの SAP Starter Kit 以外に、新しいプロジェクトを今回は追加したいと思います。最終的には以下の構成で動くように、手続きを進めていきます。
+
+<FileTree>
+
+- headapps
+  - nextjs-starter/ Nest.js starter kit
+  - spa-starters/ angular starter kit
+  - **tailwind-starter/** new project
+- local-containers
+  - docker
+    - build/ docker build image
+    - data/ docker data folder
+    - deploy
+      - platform/
+    - traefik/ traefik data and certification
+    - clean.ps1 docker image clean up script
+  - scripts
+    - down.ps1 docker script
+    - init.ps1 init script for local instance
+    - up.ps1 start xm cloud instance
+  - docker-compose.override.yml
+  - docker-compose.yml
+- sitecore.json Sitecore CLI configuration file
+- xmcloud.build.json XM Cloud Deploy configuration file
+
+</FileTree>
+
+### 前提条件
+
+以下の環境で、プロジェクトの作成を進めていきます。
+
+- Windows 11 Pro 24H2
+- Node 22.12.0
+- Docker Desktop 4.36.0 (175267)
+- Visual Studio Code + Docker 機能拡張
+
+### プロジェクトの作成
+
+まず最初に、Next.js のプロジェクトを追加します。headapps のフォルダの中で、以下のコマンドで新しいプロジェクトを追加します。
+
+```bash
+npx create-sitecore-jss
+```
+
+今回は以下のようにプロジェクトを追加していきます。
+
+![add project](../../../assets/xmcdeveloper/createproject11.png)
+
+これで `nextjs-starter` と同じプロジェクトを `tailwind-starter` というディレクトリで追加することができました。
 
 ### Docker 環境
 
-.env.template に以下の項目を追加。
+ローカルの環境となる Docker の構成を変更していきます。上記の `tailwind-starter` を動作させるための Node.js のコンテナを追加していきます。
 
-```
-// .env.template
-RENDERING_HOST_TAILWIND=tailwind.xmc-starter-js.localhost
-RENDERING_HOST_INTERNAL_TAILWIND_URI=http://rendering-tailwind:3000
-```
+<Steps>
 
-dockerfile の追加
+1. コンテナに対する環境変数を 2 つ追加します。`.env.template` および `.env` に以下の項目を追加。
 
-```dockerfile
-// local-containers\docker\build\rendering-tailwind\Dockerfile
-# escape=`
+   ```
+   // .env.template
+   RENDERING_HOST_TAILWIND=tailwind.xmc-starter-js.localhost
+   RENDERING_HOST_INTERNAL_TAILWIND_URI=http://rendering-tailwind:3000
+   ```
 
-#
-# Development-only image for running Next.js in a containerized environment.
-# Assumes that the Next.js rendering host source is mounted to c:\app.
-#
+2. `tailwind.xmc-starter-js.localhost` で参照することができるように、localhost にも記述を追加してください。
 
-ARG PARENT_IMAGE
-FROM ${PARENT_IMAGE} as debug
+3. `tailwind-starter` を動作させるための Node インスタンスを準備します。これは `nextjs-starter` のイメージと同じで問題ありませんので、以下のようにファイルをコピーして docker ファイルを作成します。
 
-USER ContainerAdministrator
+   ```dockerfile title="local-containers\docker\build\rendering-tailwind\Dockerfile"
+   # escape=`
 
-WORKDIR /app
+   #
+   # Development-only image for running Next.js in a containerized environment.
+   # Assumes that the Next.js rendering host source is mounted to c:\app.
+   #
 
-EXPOSE 3000
-#ENTRYPOINT "npm install && npm install next@canary && npm run start:connected"
-ENTRYPOINT "npm install && npm run start:connected"
-```
+   ARG PARENT_IMAGE
+   FROM ${PARENT_IMAGE} as debug
 
-```yml {14}
-// local-containers\docker-compose.yml
+   USER ContainerAdministrator
 
-  cm:
-    isolation: ${ISOLATION}
-    image: ${SITECORE_DOCKER_REGISTRY}sitecore-xmcloud-cm:${SITECORE_VERSION}
-    depends_on:
-      mssql:
-        condition: service_healthy
-      solr-init:
-        condition: service_started
-    environment:
-      host: ${CM_HOST}
-      RENDERING_HOST_INTERNAL_URI: ${RENDERING_HOST_INTERNAL_URI}
-      RENDERING_HOST_INTERNAL_TAILWIND_URI: ${RENDERING_HOST_INTERNAL_TAILWIND_URI}
+   WORKDIR /app
 
-```
+   EXPOSE 3000
+   #ENTRYPOINT "npm install && npm install next@canary && npm run start:connected"
+   ENTRYPOINT "npm install && npm run start:connected"
+   ```
 
-local-containers\docker-compose.override.yml の更新
+4. 上記のコンテナに関して、起動するときに build して一緒に起動するために、`local-containers\docker-compose.override.yml` のファイルに以下の記述を追加します。
 
-```yml
-// local-containers\docker-compose.override.yml
-  rendering-tailwind:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-rendering-tailwind:${VERSION:-latest}
-    build:
-      context: ./docker/build/rendering-tailwind
-      target: ${BUILD_CONFIGURATION}
-      args:
-        PARENT_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-nodejs:${VERSION:-latest}
-    volumes:
-      - ../headapps/tailwind-starter:C:\app
-    environment:
-      SITECORE_API_HOST: "http://cm"
-      NEXTJS_DIST_DIR: ".next-container"
-      PUBLIC_URL: "https://${RENDERING_HOST_TAILWIND}"
-      JSS_EDITING_SECRET: ${JSS_EDITING_SECRET}
-      SITECORE_API_KEY: "${SITECORE_API_KEY_APP_STARTER}"
-      DISABLE_SSG_FETCH: ${DISABLE_SSG_FETCH}
-    depends_on:
-      - cm
-      - nodejs
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.rendering-secure-tailwind.entrypoints=websecure"
-      - "traefik.http.routers.rendering-secure-tailwind.rule=Host(`${RENDERING_HOST_TAILWIND}`)"
-      - "traefik.http.routers.rendering-secure-tailwind.tls=true"
+   ```yml
+   // local-containers\docker-compose.override.yml
+     rendering-tailwind:
+       image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-rendering-tailwind:${VERSION:-latest}
+       build:
+         context: ./docker/build/rendering-tailwind
+         target: ${BUILD_CONFIGURATION}
+         args:
+           PARENT_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-nodejs:${VERSION:-latest}
+       volumes:
+         - ../headapps/tailwind-starter:C:\app
+       environment:
+         SITECORE_API_HOST: "http://cm"
+         NEXTJS_DIST_DIR: ".next-container"
+         PUBLIC_URL: "https://${RENDERING_HOST_TAILWIND}"
+         JSS_EDITING_SECRET: ${JSS_EDITING_SECRET}
+         SITECORE_API_KEY: "${SITECORE_API_KEY_APP_STARTER}"
+         DISABLE_SSG_FETCH: ${DISABLE_SSG_FETCH}
+       depends_on:
+         - cm
+         - nodejs
+       labels:
+         - "traefik.enable=true"
+         - "traefik.http.routers.rendering-secure-tailwind.entrypoints=websecure"
+         - "traefik.http.routers.rendering-secure-tailwind.rule=Host(`${RENDERING_HOST_TAILWIND}`)"
+         - "traefik.http.routers.rendering-secure-tailwind.tls=true"
+   ```
 
-  # Mount the Traefik configuration and certs.
-  traefik:
-    volumes:
-      - ./docker/traefik:C:/etc/traefik
-    depends_on:
-      - rendering-nextjs
-      - rendering-tailwind
+5. CM インスタンスが上記のコンテナに対して認識できるように、以下の1行を追加します。
 
-  cm:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xmcloud-cm:${VERSION:-latest}
-    build:
-      context: ./docker/build/cm
-      args:
-        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xmcloud-cm:${SITECORE_VERSION}
-        TOOLS_IMAGE: ${TOOLS_IMAGE}:${SITECORE_VERSION}
-    volumes:
-      - ${LOCAL_DEPLOY_PATH}\platform:C:\deploy
-      - ${LOCAL_DATA_PATH}\cm:C:\inetpub\wwwroot\App_Data\logs
-      - ${HOST_LICENSE_FOLDER}:c:\license
-    environment:
-      SITECORE_LICENSE_LOCATION: c:\license\license.xml
-      RENDERING_HOST_INTERNAL_URI: "http://rendering-nextjs:3000"
-      RENDERING_HOST_INTERNAL_TAILWIND_URI: "http://rendering-tailwind:3000"
-      SITECORE_JSS_EDITING_SECRET: ${JSS_EDITING_SECRET}
-```
+   ```yml {14}
+   // local-containers\docker-compose.yml
 
-Rendering Item の追加
+     cm:
+       isolation: ${ISOLATION}
+       image: ${SITECORE_DOCKER_REGISTRY}sitecore-xmcloud-cm:${SITECORE_VERSION}
+       depends_on:
+         mssql:
+           condition: service_healthy
+         solr-init:
+           condition: service_started
+       environment:
+         host: ${CM_HOST}
+         RENDERING_HOST_INTERNAL_URI: ${RENDERING_HOST_INTERNAL_URI}
+         RENDERING_HOST_INTERNAL_TAILWIND_URI: ${RENDERING_HOST_INTERNAL_TAILWIND_URI}
+   ```
 
-```yml
-// authoring\items\nextjs-starter\TailwindRenderingHost\Tailwind.yml
----
-ID: 'f70859ba-ddd7-459e-a3f5-67e5cdf2afbe'
-Parent: '895e25c4-12b2-4b2c-8233-82f3b79eef53'
-Template: 'bc71d442-3e4f-46ba-887c-746e54f9bb83'
-Path: /sitecore/system/Settings/Services/Rendering Hosts/Tailwind
-SharedFields:
-  - ID: '94470b31-e282-4d8d-bc54-85689efb294c'
-    Hint: ServerSideRenderingEngineConfigUrl
-    Value: 'http://rendering-tailwind:3000/api/editing/config'
-  - ID: 'e32c1801-79b3-4fc1-a9c4-3c6e6c2968ae'
-    Hint: ServerSideRenderingEngineApplicationUrl
-    Value: 'http://rendering-tailwind:3000'
-  - ID: 'fc76919b-0d7c-4732-865d-2af795fb38a4'
-    Hint: ServerSideRenderingEngineEndpointUrl
-    Value: 'http://rendering-tailwind:3000/api/editing/render'
-Languages:
-  - Language: en
-    Versions:
-      - Version: 1
-        Fields:
-          - ID: '25bed78c-4957-4165-998a-ca1b52f67497'
-            Hint: __Created
-            Value: 20220614T103029Z
-          - ID: '5dd74568-4d4b-44c1-b513-0af5f4cda34f'
-            Hint: __Created by
-            Value: |
-              sitecore\Admin
-          - ID: '8cdc337e-a112-42fb-bbb4-4143751e123f'
-            Hint: __Revision
-            Value: '61abcef1-54b6-417c-809c-b1ecc212b542'
-          - ID: 'badd9cf9-53e0-4d0c-bcc0-2d784c282f6a'
-            Hint: __Updated by
-            Value: |
-              sitecore\xmc-e2e-admin@sitecore.com
-          - ID: 'd9cf14b1-fa16-4ba6-9288-e8a174d4d522'
-            Hint: __Updated
-            Value: 20241217T070520Z
-```
+6. traefik の起動に対して、rendering-tailwind が正しく起動している場合に動作するように、`local-containers\docker-compose.override.yml` の以下の行を追加します。
 
-追加する
+   ```yml {7}
+   // local-containers\docker-.override.yml
+     traefik:
+       volumes:
+         - ./docker/traefik:C:/etc/traefik
+       depends_on:
+         - rendering-nextjs
+         - rendering-tailwind
+   ```
 
-```json {13-17}
-// authoring\items\nextjs-starter.module.json
-{
-  "$schema": "../../.sitecore/schemas/ModuleFile.schema.json",
-  "namespace": "nextjs-starter",
-  "items": {
-    "path": "nextjs-starter",
-    "includes": [
-      {
-        "name": "DefaultRenderingHost",
-        "path": "/sitecore/system/Settings/Services/Rendering Hosts/Default",
-        "scope": "singleItem"
-      },
-      {
-        "name": "TailwindRenderingHost",
-        "path": "/sitecore/system/Settings/Services/Rendering Hosts/Tailwind",
-        "scope": "singleItem"
-      }
-    ]
-  }
-}
-```
+</Steps>
 
-### XM Cloud
+これで新しいコンテナで `tailwind-starter` が動作するようになります。とはいえ、Sitecore が持っている Rendering Host は Default のみとなっているため、別の Node のコンテナに対しての通信ができません。ローカルの環境に対しては、手作業となりますが Content Editor で作成をします。
 
-tailwindstarter を追加。
+<Steps>
 
-```json
-// xmcloud.build.json
-{
-  "renderingHosts": {
-    "nextjsstarter": {
+1. Content Editor を開いて、/sitecore/system/Settings/Services/Rendering Hosts/Default のアイテムを選択、右クリックをして Duplicate で同じアイテムを作成します
 
-    ...
+   ![duplicate](../../../assets/xmcdeveloper/createproject12.png)
 
-    },
-    "tailwindstarter": {
-      "path": "./headapps/tailwind-starter",
-      "nodeVersion": "22.11.0",
-      "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
-      "enabled": true,
-      "type": "sxa",
-      "buildCommand": "build",
-      "runCommand": "next:start"
-    }
-```
+2. 作成するアイテムの名前は `tailwindstarter` とします。
+
+3. アイテムの各フィールドの値を以下のように変更をします。
+
+   | フィールド名                                   | 値                                               |
+   | ---------------------------------------------- | ------------------------------------------------ |
+   | Server side rendering engine endpoint URL      | `http://tailwind-nextjs:3000/api/editing/render` |
+   | Server side rendering engine application URL   | `http://tailwind-nextjs:3000`                    |
+   | Server side rendering engine configuration URL | `http://tailwind-nextjs:3000/api/editing/config` |
+
+</Steps>
+
+これで Docker 環境の準備ができました。実際にコンテナベースの XM Cloud を起動して、動作環境の確認していきます。
+
+<Steps>
+
+1. Basic site を追加して、Experience Editor で動作することを確認します。
+
+   ![Experience Editor](../../../assets/xmcdeveloper/createproject13.png)
+
+2. 作成をしたサイトの Rendering Host を変更します。
+
+   ![Rendering Host](../../../assets/xmcdeveloper/createproject14.png)
+
+3. Experience Editor で改めてページを開いて表示されることを確認します。
+
+4. Visual Studio Code のコンテナ一覧から rendering-tailwind の Log を確認します
+
+   ![Show Logs](../../../assets/xmcdeveloper/createproject15.png)
+
+5. CMS からアクセスをしているログの確認ができました。
+
+   ![Logs](../../../assets/xmcdeveloper/createproject16.png)
+
+</Steps>
+
+このように、追加のプロジェクトに関しては別の Node.js のコンテナを用意することができます。また、その Node インスタンスを利用して Experience Editor が動作するようになりました。
+
+### XM Cloud 環境
+
+ここでは上記の Docker の環境に対する作業が完了していることを前提として、XM Cloud 固有の変更点を紹介します。XM Cloud のビルドプロセスの変更をする場合は、`xmcloud.build.json` のファイルを変更する形となります。
+
+<Steps>
+
+1. `xmcloud.build.json` に以下のように、記述を追加してください。
+
+   ```json {9-17}
+   // xmcloud.build.json
+   {
+     "renderingHosts": {
+       "nextjsstarter": {
+
+       ...
+
+       },
+       "tailwindstarter": {
+         "path": "./headapps/tailwind-starter",
+         "nodeVersion": "22.11.0",
+         "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
+         "enabled": true,
+         "type": "sxa",
+         "buildCommand": "build",
+         "runCommand": "next:start"
+       }
+   ```
+
+2. 上記の設定を GitHub の対象となるリポジトリのブランチに対して反映させて、XM Cloud の Deploy が完了するのを待ちます。
+
+3. 新しく反映された CM インスタンスの Rendering Host の設定を見ると、２つのインスタンスが準備されていることが分かります。
+
+   ![tailwindstarter](../../../assets/xmcdeveloper/createproject17.png)
+
+4. サンプルサイトの Rendering Host を変更します
+
+   ![rendering host](../../../assets/xmcdeveloper/createproject18.png)
+
+5. Pages で正しくレンダリングできていることを確認できます。
+
+   ![pages](../../../assets/xmcdeveloper/createproject19.png)
+
+</Steps>
+
+今回は、tailwind-starter のプロジェクトは Next.js Starter と同じレンダリングを今の段階では提供しているため、Rendering Host を切り替えるだけでページをそのまま表示することができました。
 
 ## 更新履歴
 
 - **2024-12-18** XM Cloud Front End Application Starter Kits が更新されたため以下の変更を行いました。
-  - nextjs-starter および spa-starter と並行して tailwind-starter が動くようにしました
+  - [プロジェクトの追加](#プロジェクトの追加) を追加しました。`nextjs-starter` および `spa-starter` と並行して `tailwind-starter` が動くようにしました
 
