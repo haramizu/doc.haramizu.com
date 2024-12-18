@@ -1,16 +1,80 @@
 ---
 title: 開発環境の整備
-description: このドキュメントでは、S
+description: このドキュメントでは、Sitecore XM Cloud でのサイト開発をする際の環境について紹介をします。
 sidebar:
-  order: 3
-publishDate: 2024-12-11
-lastUpdated: 2024-12-11
+  order: 2
+  badge:
+    text: 新着
+publishDate: 2024-12-17
+lastUpdated: 2024-12-17
 draft: true
 ---
 
-このドキュメントでは、XM Cloud の開発を行う場合のスタイルとして、XM Cloud のインスタンスに接続して開発をする方法と、ローカルでの Docker での環境について、それぞれの環境の整え方を紹介します。
+{/* https://blog.haramizu.com/ja-JP/blog/2024/10/01/xmcloud-foundation-head-dev-2024 */}
+{/* https://blog.haramizu.com/ja-JP/blog/2024/09/06/xmcloud-localhost-how-to-show-image */}
+{/* https://blog.haramizu.com/ja-JP/blog/2023/12/02/advent-calendar-2023-day-2 */}
+{/* https://blog.haramizu.com/ja-JP/blog/2023/07/20/nextjs-connect-to-xmcloud */}
+
+import { FileTree, Steps, LinkCard } from '@astrojs/starlight/components';
+
+このドキュメントでは、XM Cloud を利用して Web サイトの開発を行う場合の環境について紹介をします。XM Cloud のインスタンスに接続して開発をする方法と、ローカルでの Docker での環境について、それぞれの環境の整え方を紹介します。
+
+## Starter Kit の構成
+
+Sitecore XM Cloud のプロジェクトに関する Starter Kit を GitHub のリポジトリで公開をしています。
+
+<LinkCard
+  title="XM Cloud Front End Application Starter Kits"
+  href="https://github.com/sitecorelabs/xmcloud-foundation-head"
+  target="_blank"
+  description="This repository contains the Next.js Starter Kit, and the SPA Starters monorepo (which includes a Node Proxy Application and and SPA starter apps) for Sitecore XM Cloud Development. It is intended to get developers up and running quickly with a new front end project that is integrated with Sitecore XM Cloud."
+/>
+
+上記のリポジトリは XM Cloud のプロジェクト作成の際に選択することが可能となっています。また先にプロジェクトを作成して展開することができるように、 `Use this template` から新しいリポジトリを作成して、利用することも可能です。
+
+このプロジェクトには、以下の役割のファイルが配置されています。
+
+<FileTree>
+
+- headapps
+  - nextjs-starter/ Nest.js starter kit
+  - spa-starters/ angular starter kit
+- local-containers
+  - docker
+    - build/ docker build image
+    - data/ docker data folder
+    - deploy
+      - platform/
+    - traefik/ traefik data and certification
+    - clean.ps1 docker image clean up script
+  - scripts
+    - down.ps1 docker script
+    - init.ps1 init script for local instance
+    - up.ps1 start xm cloud instance
+  - docker-compose.override.yml
+  - docker-compose.yml
+- sitecore.json Sitecore CLI configuration file
+- xmcloud.build.json XM Cloud Deploy configuration file
+
+</FileTree>
+
+このプロジェクトを利用することで、ローカルで Docker コンポーネントを利用して開発をすることが可能です。Docker イメージは Windows Container を利用しているため、ローカルでの開発環境を用意するためには、Windows で Docker が動作する環境が必要となります。
+
+## Docker の利用
+
+Sitecore XM Cloud の開発環境をローカルの PC で利用するための仕組みとして Docker を利用して環境を用意することが出来ます。今回はこの手順を紹介します。
+
+### 前提条件
+
+今回の記事は以下の環境で実行しています。
+
+- Windows 11 Pro 23H2
+- Docker 4.37.0
+- Visual Studio Code
+
+また、
 
 ## XM Cloud インスタンス
 
-## Docker
+### 前提条件
 
