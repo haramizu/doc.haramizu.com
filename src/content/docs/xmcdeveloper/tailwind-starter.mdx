@@ -10,8 +10,6 @@ publishDate: 2025-01-06
 lastUpdated: 2025-01-06
 ---
 
-{/* https://blog.haramizu.com/ja-JP/blog/2022/03/14/tailwindcss */}
-{/* https://blog.haramizu.com/ja-JP/blog/2024/02/28/xm-cloud-tailwind-style */}
 {/* https://blog.haramizu.com/ja-JP/blog/2024/06/28/xmcloud-tailwindcss-sample-part-6 */}
 
 import { Steps, LinkCard, Aside, FileTree } from '@astrojs/starlight/components';
@@ -154,10 +152,63 @@ Next.js Starter Kit は Bootstrap を CSS フレームワークとして利用�
 
 ### グリッドの調整
 
-{/* https://blog.haramizu.com/ja-JP/blog/2023/12/23/advent-calendar-2023-day-23 */}
-{/* https://blog.haramizu.com/ja-JP/blog/2024/03/01/xm-cloud-column-splitter */}
+利用頻度の多いコンポーネントとして **Culumn Splitter** および **Row Splitter** の２つのコンポーネントがあります。このコンポーネントの動作を確認すると、まず `Column Splitter` を配置すると以下のようになります。
+
+![Column Splitter](../../../assets/xmcdeveloper/tailwindstarter08.png)
+
+期待すべき結果は横に２つ並ぶ形ですが、縦に並んでいる状況です。HTML の出力は以下のようになっています。
+
+```html
+<div class="row component column-splitter basis-full">
+  <div class="basis-1/2"><div class="row"></div></div>
+  <div class="basis-1/2"><div class="row"></div></div>
+</div>
+```
+
+まず横に並べるためには、flex クラスを追加する必要があります。そこで、`headapps/tailwind-starter/src/styles/components/ColumnSplitter.css` というファイルを作成して、以下のコードを適用します。
+
+```css
+// headapps/tailwind-starter/src/styles/components/ColumnSplitter.css
+.column-splitter {
+  @apply flex;
+}
+```
+
+上記の結果、以下のような表示に変わります。
+
+![Column Splitter](../../../assets/xmcdeveloper/tailwindstarter09.png)
+
+横に並びましたが、それぞれに指定されている `basis-1/2` の横幅が適用されていない形となります。Tailwind CSS の特徴として、なるべくサイト向けのスタイルシートをシンプルにするために、コードに記述されていないスタイルシートは無効になるため、コンポーネントで出力しているスタイルが適用できていません。
+
+そこで、設定ファイルとなる tailwind.config.js に対して、salelist で指定をして利用できるように、以下のコードを追加をします。
+
+```js {5-10}
+// headapps/tailwind-starter/tailwind.config.js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [],
+  safelist: [
+    {
+      pattern: /basis-/,
+      variants: ['sm', 'md', 'lg', 'xl', '2xl'],
+    },
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+無事、横に２つ並んで 1/2 を指定している値が有効になりました。
+
+![Column Splitter](../../../assets/xmcdeveloper/tailwindstarter10.png)
+
+### 表示位置の調整
 
 ### コンテナの背景色の制御
+
+コンテナの上には様々なコンポーネントを配置することができ、またレスポンシブなどの処理で表示・非表示というのをコンテナ単位で制御できることもあり、非常に便利なコンポーネントです。
 
 {/* https://blog.haramizu.com/ja-JP/blog/2024/09/11/xmcloud-tailwindcss-sample-part-7 */}
 
