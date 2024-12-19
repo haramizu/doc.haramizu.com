@@ -1,5 +1,5 @@
 ---
-title: 開発環境の整備
+title: 開発環境の作成
 description: このドキュメントでは、Sitecore XM Cloud でのサイト開発をする際の環境について紹介をします。
 next: false
 sidebar:
@@ -8,11 +8,6 @@ sidebar:
     text: 新着
 publishDate: 2024-12-19
 ---
-
-{/* https://blog.haramizu.com/ja-JP/blog/2024/10/01/xmcloud-foundation-head-dev-2024 */}
-{/* https://blog.haramizu.com/ja-JP/blog/2024/09/06/xmcloud-localhost-how-to-show-image */}
-{/* https://blog.haramizu.com/ja-JP/blog/2023/12/02/advent-calendar-2023-day-2 */}
-{/* https://blog.haramizu.com/ja-JP/blog/2023/07/20/nextjs-connect-to-xmcloud */}
 
 import { FileTree, Steps, LinkCard } from '@astrojs/starlight/components';
 
@@ -184,10 +179,73 @@ Docker とは異なり、SaaS の環境として提供されている XM Cloud �
 
 ### 前提条件
 
+CMS のサーバーとしてはクラウド上のインスタンスを利用しながら、ローカルで動作する Next.js のプロジェクトと繋げて動作させる形となります。このため、Next.js が動作できれば、問題なく作業をすることが可能です。前提条件は以下の通りです。
+
 - Sitecore XM CLoud の開発用インスタンス
+- Sitecore JSS 21.6 以降
 - Node 22.x 以上
 - Visual Studio Code
 - Google Chrome, Microsoft Edge などモダンブラウザ
 
+今回は、macOS の環境で Next.js のプロジェクトを起動して、インターネット上にある開発サーバーと連携させる環境を確認していきます。
+
 ### 環境の構築
+
+まず最初に、ローカルで Next.js が動作する環境を用意する必要があります。手順は以下の通りです。
+
+<Steps>
+
+1. XM Cloud Deploy で対象となるインスタンスの、Developer Settings にアクセスをします
+
+2. 対象となる Site を選択して、Environment variables の値を確認します。
+
+   ![Developer settings](../../../assets/xmcdeveloper/developerenvironment09.png)
+
+3. ローカルで起動する Next.js のフォルダに .env.local ファイルを作成します。
+
+   ```
+   // .env.local
+   SITECORE_EDGE_CONTEXT_ID=contect-id-preview
+   SITECORE_SITE_NAME=nextjs-starter
+   JSS_EDITING_SECRET=editing-secret
+   ```
+
+4. ローカルで起動しますが、いつもと異なり start:connected を利用します。
+
+   ```bash
+   npm install
+   npm run start:connected
+   ```
+
+</Steps>
+
+これでローカルの Next.js のプロジェクトが Sitecore に接続をしてローカルで表示されるようになりました。
+
+![Basic site](../../../assets/xmcdeveloper/developerenvironment10.png)
+
+続いて Pages を今回立ち上げたローカルのプロジェクトと接続をします。
+
+<Steps>
+
+1. XM Cloud で Pages を開きます
+
+   ![Pages](../../../assets/xmcdeveloper/developerenvironment11.png)
+
+2. みたまま編集をするための画面にある Default editing host の項目をクリックして、Localhost を選択、`http://localhost:3000` を設定します。
+
+   ![Pages](../../../assets/xmcdeveloper/developerenvironment12.png)
+
+3. 設定をすると、**You are working with a local host.** というメッセージを表示しながら、ローカルの Next.js につながっている状況を確認することができます。
+
+   ![Pages](../../../assets/xmcdeveloper/developerenvironment13.png)
+
+4. ローカルで起動している Next.js のログを確認すると、Pages がローカルのインスタンスを利用していることを確認することができました。
+
+   ![Pages](../../../assets/xmcdeveloper/developerenvironment14.png)
+
+</Steps>
+
+このように、XM Cloud のサーバーインスタンスを利用して、ローカルの Next.js などのプロジェクトの開発をすることができます。
+
+## まとめ
 
