@@ -380,6 +380,125 @@ function replaceTextInSelector() {
 
 ![Help](../../../assets/tools/wxt14.png)
 
+### 対応言語の追加
+
+上記のコードでは、インストールをしている環境では必ず日本語の表示に変わります。実際にはこういうツールは複数の言語への対応が必要となるため、以下のように言語に関しての設定を追加していきます。
+
+<Steps>
+
+1. 言語定義のための json ファイルとして entrypoints/resources/languages.json を以下のように作成します。
+
+   ```json
+   // entrypoints/resources/languages.json
+   {
+     "en": "English",
+     "ja": "日本語",
+     "fr": "Français"
+   }
+   ```
+
+2. en.json のファイルをベースに `entrypoints/resources/fr.json` のファイルを作成します。
+
+3. ここからは `entrypoints/content.ts` のファイルを変更していきます。作成をした言語に関するデータをインポートします。
+
+   ```diff lang="ts"
+   // entrypoints/content.ts
+   import en from './resources/en.json';
+   import ja from './resources/ja.json';
+   +import fr from './resources/fr.json';
+   +import languages from './resources/languages.json';
+   ```
+
+4. 言語に関して、ブラウザの言語を取得するように以下のコードを追加します。ロケールを指定している場合でも、最初の２文字の言語だけでここでは処理をします。
+
+   ```ts
+   // entrypoints/content.ts
+     main() {
+       const lang = navigator.language.slice(0, 2);
+
+       console.log('lang: ' + lang);
+   ```
+
+5. 上記の変更後、アクセスをしてブラウザの優先言語が開発者ツールの Console に表示されているか確認をします。
+
+   ![lang](../../../assets/tools/wxt15.png)
+
+6. 英語、そして language.json に定義されていない言語の場合はオリジナルを表示するようにコードを追加します。
+
+   ```ts {7-12}
+   // entrypoints/content.ts
+     main() {
+       const lang = navigator.language.slice(0, 2);
+
+       console.log('lang: ' + lang);
+
+       // If the language is 'en', do not execute
+       if (lang.startsWith('en') || !Object.keys(languages).some(language => lang.startsWith(language))) {
+         console.log('Original');
+
+         return;
+       }
+   ```
+
+7. ドイツ語で実行した場合、オリジナルのコンテンツが表示されていることを確認します。
+
+   ![Original](../../../assets/tools/wxt16.png)
+
+8. `function replaceTextInSelector` に関して、言語情報を渡して必要な情報を利用するように設定します。ここで必要なリソースを読み込むようにコードも書き換えます。
+
+   ```ts
+   // entrypoints/content.ts
+   async function replaceTextInSelector(lang: string) {
+     const selectors = Object.keys(en) as TranslationKeys[];
+     let translations: Record<string, string> | null = null;
+
+     try {
+       const module = await import(`./resources/${lang}.json`);
+       translations = module.default;
+     } catch (error) {
+       console.error(`Translation file for ${lang} not found.`);
+       return;
+     }
+
+     selectors.forEach((selector) => {
+       const element = document.querySelector(selector);
+       if (translations && element?.textContent?.trim() === en[selector]) {
+         if (translations[selector as keyof typeof translations]) {
+           element.textContent = translations[selector as keyof typeof translations];
+         }
+       }
+     });
+   }
+   ```
+
+9. 表示の切り替えの呼び出しに対して言語を指定するようにします。
+
+   ```ts {3,7}
+   // entrypoints/content.ts
+   // Replace text in HTML
+   replaceTextInSelector(lang);
+
+   // Observe changes in the DOM
+   const observer = new MutationObserver(() => {
+     replaceTextInSelector(lang);
+   });
+   observer.observe(document.body, { childList: true, subtree: true });
+   ```
+
+10. 最後に、不要となった `ja.json` および `fr.json` のインポートを削除します。
+
+    ```diff lang="ts"
+    // entrypoints/content.ts
+    import en from './resources/en.json';
+    -import ja from './resources/ja.json';
+    -import fr from './resources/fr.json';
+    import languages from './resources/languages.json';
+    ```
+
+</Steps>
+
+これでブラウザの優先言語を利用して、各言語のリソースを表示するようになりました。
+
 ### ドメインごとのファイルに変更する
 
 Sitecore Cloud のサービスは複数のドメインにわたって動作しています。リソースファイルをもう少し管理しやすくするために、サブディレクトリを切って、リソースを分けていきます。階層は以下の通りです。
