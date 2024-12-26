@@ -509,9 +509,11 @@ Sitecore Cloud のサービスは複数のドメインにわたって動作し�
   - resources
     - login.sitecorecloud.io
       - en.json
+      - fr.json
       - ja.json
     - portal.sitecorecloud.io
       - en.json
+      - fr.json
       - ja.json
 
 </FileTree>
@@ -537,4 +539,230 @@ Sitecore Cloud のサービスは複数のドメインにわたって動作し�
   "[data-testid='help-item-Help'] p": "Useful links and support"
 }
 ```
+
+上記を前提として、以下のように `entrypoints/content.ts` のファイルを更新していきます。
+
+<Steps>
+
+1. ドメインの取得のコードを記述して、正しくドメインを取得できているか確認をします。
+
+   ```ts {5-6}
+   // entrypoints/content.ts
+     main() {
+       const lang = navigator.language.slice(0, 2);
+
+       const domain = window.location.hostname;
+       console.log('domain: ' + domain);
+   ```
+
+   ![domain](../../../assets/tools/wxt17.png)
+
+2. replaceTextInSelector に対して上記のドメインを渡すように、引数を追加します。また言語のリソースをそれぞれドメインのディレクトリの下から取得するようにします。
+
+   ```ts
+   // entrypoints/content.ts
+   async function replaceTextInSelector(lang: string, domain: string) {
+     let selectors: TranslationKeys[] = [];
+     let en: Record<string, string>;
+
+     try {
+       en = await import(`./resources/${domain}/en.json`).then(module => module.default).catch(() => null);
+       selectors = Object.keys(en) as TranslationKeys[];
+     } catch (error) {
+       console.error(`English translation file for ${domain} not found.`);
+       return;
+     }
+
+     let translations: Record<string, string> | null = null;
+
+     try {
+       const module = await import(`./resources/${domain}/${lang}.json`);
+       translations = module.default;
+     } catch (error) {
+       console.error(`Translation file for ${lang} not found.`);
+       return;
+     }
+   ```
+
+3. replaceTextInSelector の呼び出しに対して domain を追加します。
+
+   ```ts
+   // entrypoints/content.ts
+
+   // Replace text in HTML
+   replaceTextInSelector(lang, domain);
+
+   // Observe changes in the DOM
+   const observer = new MutationObserver(() => {
+     replaceTextInSelector(lang, domain);
+   });
+   ```
+
+4. import での en リソースを削除します。合わせて、en を利用していたキーに関する記述を変更します。
+
+   ```diff lang="ts"
+   -import en from './resources/en.json';
+   import languages from './resources/languages.json';
+
+   -type TranslationKeys = keyof typeof en;
+   +type TranslationKeys = keyof typeof String;
+   ```
+
+</Steps>
+
+上記で、ドメインごとにリソースを持つことができるようになりました。
+
+## 言語切替スイッチの実装
+
+現在はブラウザのロケールを利用して画面の表示を切り替えるように実装をしていますが、変更が可能なように Popup の画面を変更していきます。動作としては以下のような実装に変更をします。
+
+1. 機能拡張は言語の情報をストレージに確保します
+2. ストレージの情報がない場合は、初期値としてブラウザの言語を利用します
+3. 機能拡張の画面で言語を変更すると、ストレージの言語を切り替えます
+
+これにより、ブラウザの言語を切り替えることなく、各種言語の表示に切り替えることが可能となります。
+
+<Steps>
+
+1. ストレージを利用するために、`@wxt-dev/storage` のパッケージをインストールします。
+
+   ```bash
+   npm install npm install @wxt-dev/storage
+   ```
+
+2. `entrypoints/popup/App.tsx` に関して、以下のように変更をします。変更点は多いため全てのコードをここでは記述しています。
+
+   ```ts
+   // entrypoints/popup/App.tsx
+   import { useState, useEffect } from "react";
+   import languages from "../resources/languages.json";
+   import { storage } from "@wxt-dev/storage";
+   import "./App.css";
+
+   function App() {
+     const browserLocale = navigator.language.slice(0, 2);
+     const [selectedLanguage, setSelectedLanguage] = useState(browserLocale);
+
+     const setLanguageStorage = async (lang: string) => {
+       await storage.setItem(`local:preferredLanguage`, lang);
+     };
+
+     const getLanguageStorage = async () => {
+       const lang = (await storage.getItem(`local:preferredLanguage`)) as string;
+       return lang || browserLocale;
+     };
+
+     useEffect(() => {
+       const initLanguage = async () => {
+         const savedLang = (await getLanguageStorage()) as string;
+         setSelectedLanguage(savedLang);
+       };
+       initLanguage();
+     }, []);
+
+     const handleLanguageChange = (
+       event: React.ChangeEvent<HTMLSelectElement>
+     ) => {
+       const newLang = event.target.value;
+       setSelectedLanguage(newLang);
+       setLanguageStorage(newLang).then(() => {
+         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+           if (tabs[0].id) {
+             chrome.tabs.reload(tabs[0].id);
+           }
+         });
+       });
+     };
+
+     return (
+       <>
+         <h1 className="heading-1">Sitecore Language Switcher</h1>
+         <div className="card">
+           <select
+             value={selectedLanguage}
+             onChange={handleLanguageChange}
+             className="language-select"
+           >
+             {Object.entries(languages).map(([code, name]) => (
+               <option key={code} value={code}>
+                 {name}
+               </option>
+             ))}
+           </select>
+         </div>
+       </>
+     );
+   }
+
+   export default App;
+   ```
+
+3. スタイルシートを更新します。
+
+   ```css
+   #root {
+     max-width: 1280px;
+     margin: 0 auto;
+     padding: 2rem;
+     text-align: center;
+   }
+
+   .language-select {
+     padding: 8px 12px;
+     margin: 10px 0;
+     border-radius: 4px;
+     border: 1px solid #ccc;
+     background-color: white;
+     font-size: 14px;
+     width: 200px;
+     cursor: pointer;
+   }
+
+   @media (prefers-color-scheme: dark) {
+     .language-select {
+       background-color: #333;
+       border: 1px solid #555;
+       color: white;
+     }
+   }
+
+   .heading-1 {
+     font-size: 16px;
+   }
+
+   .card {
+     padding: 2em;
+   }
+
+   .read-the-docs {
+     color: #888;
+   }
+   ```
+
+4. `entrypoints/content.ts` が表示する言語に関して、Storage を参照するように変更をします。
+
+   ```ts {3,9-12}
+   // entrypoints/content.ts
+   import languages from './resources/languages.json';
+   import { storage } from "@wxt-dev/storage";
+
+   type TranslationKeys = keyof typeof String;
+
+   export default defineContentScript({
+     matches: ['*://*.sitecorecloud.io/*'],
+     async main() {
+       const browserLang = navigator.language.slice(0, 2);
+       const storedLang = (await storage.getItem(`local:preferredLanguage`)) as string;
+       const lang = storedLang || browserLang;
+   ```
+
+</Steps>
+
+動作確認をしていきます。まず、起動すると手元の環境は日本語を標準言語としているため、日本語が表示されました。
+
+![JapaneseUI](../../../assets/tools/wxt18.png)
+
+英語に切り替えると、管理画面の言語は英語に切り替わります。
+
+![English UI](../../../assets/tools/wxt19.png)
 
