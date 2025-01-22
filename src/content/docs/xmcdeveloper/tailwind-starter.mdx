@@ -6,8 +6,8 @@ sidebar:
   order: 11
   badge:
     text: 新着
-publishDate: 2025-01-06
-lastUpdated: 2025-01-06
+publishDate: 2025-01-23
+lastUpdated: 2025-01-23
 draft: true
 ---
 
@@ -151,7 +151,7 @@ Next.js Starter Kit は Bootstrap を CSS フレームワークとして利用�
 
 上記の作業をしただけでは、スタイルシートのフレームワークを切り替えただけであり、かつ各コンポーネントに関するスタイルが何も定義されていない状況となります。そこで、いくつかのコンポーネントに対するスタイルを追加していきます。
 
-### グリッドの調整
+### グリッド
 
 利用頻度の多いコンポーネントとして **Culumn Splitter** および **Row Splitter** の２つのコンポーネントがあります。このコンポーネントの動作を確認すると、まず `Column Splitter` を配置すると以下のようになります。
 
@@ -205,9 +205,219 @@ module.exports = {
 
 ![Column Splitter](../../../assets/xmcdeveloper/tailwindstarter10.png)
 
-### 表示位置の調整
+### 表示オプション
 
-### コンテナの背景色の制御
+今回は RichText エディターを利用して、コンポーネントの表示位置、およびテキストの位置に関してのスタイルを追加していきます。まず RichText コンポーネントを Pages を利用して配置します。
+
+![RichText Components](../../../assets/xmcdeveloper/tailwindstarter11.png)
+
+配置をした時、コンポーネントのオプションとして Spacing / Add Highlight / Content Alignment / Rich Text の設定項目が表示されます。Rich Text に関しては別途取り上げるとして、例えば項目に関して以下のように設定します。
+
+![RichText Options](../../../assets/xmcdeveloper/tailwindstarter12.png)
+
+これを設定した場合、HTML のコードは以下のように変わります。
+
+```html
+<div id="content">
+  <!--$-->
+  <div class="component rich-text indent-bottom highlighted-left position-center basis-full">
+    <div class="component-content">
+      <div>
+        <div class="ck-content"><p>Text</p></div>
+      </div>
+    </div>
+  </div>
+  <!--/$-->
+</div>
+```
+
+これらの定義は、構築中のサイトの中にアイテムとして定義されています。サイトのツリーを参照すると以下のようになっています（ツリーで表示するために便宜的に - をアイテム名に入れています）。なおアイテムの右側に記載されているのが、CSS に出力される値となります。
+
+<FileTree>
+
+- Presentation
+  - Styles
+    - Spacing
+      - Indent-top indent-top
+      - Indent-bottom indent-bottom
+      - Indent-side indent
+    - Add-highlight
+      - Highlighted-left highlighted-left
+      - Highlighted-right highlighted-right
+      - Highlighted-top highlighted-top
+      - Highlighted-bottom highlighted-bottom
+    - Content-alignment
+      - Align-content-left position-left
+      - Align-content-center position-center
+      - Align-content-right position-right
+
+</FileTree>
+
+Spacing および Content alignment に関しては、画像などでも利用することがある汎用的な表示オプションということになります。共通のスタイルということで、スタイルのファイルを2つ作成します。
+
+```css
+// headapps\tailwind-starter\src\styles\common\alignment.css
+.position-left {
+  @apply flex;
+  @apply justify-start;
+}
+
+.position-right {
+  @apply flex;
+  @apply justify-end;
+}
+
+.position-center {
+  @apply flex;
+  @apply justify-center;
+}
+```
+
+```css
+// headapps\tailwind-starter\src\styles\common\highlight.css
+.highlighted-left {
+  @apply border-l-4;
+  @apply border-blue-500;
+}
+
+.highlighted-right {
+  @apply border-r-4;
+  @apply border-blue-500;
+}
+
+.highlighted-top {
+  @apply border-t-4;
+  @apply border-blue-500;
+}
+
+.highlighted-bottom {
+  @apply border-b-4;
+  @apply border-blue-500;
+}
+```
+
+```css
+// headapps\tailwind-starter\src\styles\common\spacing.css
+.indent {
+  @apply mx-3;
+}
+
+.indent-top {
+  @apply mt-3;
+}
+
+.indent-bottom {
+  @apply mb-3;
+}
+```
+
+上記3つのファイルを、globals.css ファイルに対して追加します。
+
+```css {8-11}
+// headapps\tailwind-starter\src\styles\globals.css
+@import './app.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Pages Style - Common */
+@import './common/alignment.css';
+@import './common/highlight.css';
+@import './common/spacing.css';
+
+/* Components */
+@import './components/ColumnSplitter.css';
+```
+
+これで、以下のように表示位置を反映させることができました。
+
+![RichText spacing](../../../assets/xmcdeveloper/tailwindstarter13.png)
+
+### リッチテキスト
+
+RichText コンポーネントの中に入っている HTML に関して、まず以下のように段落を設定している形とします。
+
+```html
+<p>Paragraph</p>
+<ul>
+  <li>Bullets 1</li>
+  <li>Bullets 2</li>
+  <li>Bullets 3</li>
+</ul>
+<p>Paragraph</p>
+<ol>
+  <li>Number 1</li>
+  <li>Number 2</li>
+  <li>Number 3</li>
+</ol>
+```
+
+Tailwind CSS を利用している場合は、何も定義していない場合は以下のようにフラットに表示されます。
+
+![HTML List](../../../assets/xmcdeveloper/tailwindstarter14.png)
+
+RichText 出の表示に関する定義を追加していく必要があります。これは h1 タグなどにも同様に適用する必要があるため、リッチテキストのスタイルを定義するファイルを以下のように作成をします。
+
+```css
+// headapps\tailwind-starter\src\styles\components\RichText.css
+.component.rich-text {
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  ul {
+    @apply list-disc pb-2 pl-3 pt-2;
+  }
+
+  ol {
+    @apply list-decimal pb-2 pl-3 pt-2;
+  }
+
+  li {
+    @apply ml-4;
+  }
+}
+```
+
+`headapps\tailwind-starter\src\styles\globals.css` のファイルで上記のスタイルをインポートしたあと、改めてプレビューを参照すると表示が切り替わっていることが分かります。
+
+![HTML List](../../../assets/xmcdeveloper/tailwindstarter15.png)
+
+また Rich Text に関してもスタイルを表示するためのサンプルの値が用意されています。
+
+<FileTree>
+
+- Presentation
+  - Styles
+    - Rich-text
+      - Custom-bullet-points rich-text-lists
+
+</FileTree>
+
+これを有効にした時に、一覧の表示が書き換わるように以下のコードを `headapps\tailwind-starter\src\styles\components\RichText.cs` に追加します。
+
+```css
+.component.rich-text.rich-text-lists {
+  ul {
+    @apply list-disc px-2 pl-9 text-2xl;
+  }
+}
+```
+
+設定後、リッチテキストのコンポーネントの表示オプションでチェックをすると、リストの文字が大きくなります。
+
+![HTML List](../../../assets/xmcdeveloper/tailwindstarter16.png)
+
+### コンテナの背景色
 
 コンテナの上には様々なコンポーネントを配置することができ、またレスポンシブなどの処理で表示・非表示というのをコンテナ単位で制御できることもあり、非常に便利なコンポーネントです。
 
