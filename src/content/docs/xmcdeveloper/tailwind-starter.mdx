@@ -262,7 +262,7 @@ module.exports = {
 Spacing および Content alignment に関しては、画像などでも利用することがある汎用的な表示オプションということになります。共通のスタイルということで、スタイルのファイルを2つ作成します。
 
 ```css
-// headapps\tailwind-starter\src\styles\common\alignment.css
+// src\styles\common\alignment.css
 .position-left {
   @apply flex;
   @apply justify-start;
@@ -280,7 +280,7 @@ Spacing および Content alignment に関しては、画像などでも利用�
 ```
 
 ```css
-// headapps\tailwind-starter\src\styles\common\highlight.css
+// src\styles\common\highlight.css
 .highlighted-left {
   @apply border-l-4;
   @apply border-blue-500;
@@ -303,7 +303,7 @@ Spacing および Content alignment に関しては、画像などでも利用�
 ```
 
 ```css
-// headapps\tailwind-starter\src\styles\common\spacing.css
+// src\styles\common\spacing.css
 .indent {
   @apply mx-3;
 }
@@ -320,7 +320,7 @@ Spacing および Content alignment に関しては、画像などでも利用�
 上記3つのファイルを、globals.css ファイルに対して追加します。
 
 ```css {8-11}
-// headapps\tailwind-starter\src\styles\globals.css
+// src\styles\globals.css
 @import './app.css';
 
 @tailwind base;
@@ -366,7 +366,7 @@ Tailwind CSS を利用している場合は、何も定義していない場合�
 RichText 出の表示に関する定義を追加していく必要があります。これは h1 タグなどにも同様に適用する必要があるため、リッチテキストのスタイルを定義するファイルを以下のように作成をします。
 
 ```css
-// headapps\tailwind-starter\src\styles\components\RichText.css
+// src\styles\components\RichText.css
 .component.rich-text {
   h1 {
     @apply text-4xl;
@@ -394,7 +394,7 @@ RichText 出の表示に関する定義を追加していく必要がありま�
 }
 ```
 
-`headapps\tailwind-starter\src\styles\globals.css` のファイルで上記のスタイルをインポートしたあと、改めてプレビューを参照すると表示が切り替わっていることが分かります。
+`src\styles\globals.css` のファイルで上記のスタイルをインポートしたあと、改めてプレビューを参照すると表示が切り替わっていることが分かります。
 
 ![HTML List](../../../assets/xmcdeveloper/tailwindstarter15.png)
 
@@ -409,7 +409,7 @@ RichText 出の表示に関する定義を追加していく必要がありま�
 
 </FileTree>
 
-これを有効にした時に、一覧の表示が書き換わるように以下のコードを `headapps\tailwind-starter\src\styles\components\RichText.cs` に追加します。
+これを有効にした時に、一覧の表示が書き換わるように以下のコードを `src\styles\components\RichText.cs` に追加します。
 
 ```css
 .component.rich-text.rich-text-lists {
@@ -449,7 +449,7 @@ RichText 出の表示に関する定義を追加していく必要がありま�
 今回は背景色の部分のみを定義するため、以下のようにスタイルシートを追加します。
 
 ```css
-// headapps\tailwind-starter\src\styles\components\Container.css
+// src\styles\components\Container.css
 .container-dark-background {
   @apply bg-gray-800 text-white;
 }
@@ -467,7 +467,7 @@ RichText 出の表示に関する定義を追加していく必要がありま�
 }
 ```
 
-上記のファイルを `headapps\tailwind-starter\src\styles\globals.css` に対して追加して、コンテナの背景色を有効にします。以下が、実際にコンテナを配置して、背景色を指定した結果となります。
+上記のファイルを `src\styles\globals.css` に対して追加して、コンテナの背景色を有効にします。以下が、実際にコンテナを配置して、背景色を指定した結果となります。
 
 ![Contaner background](../../../assets/xmcdeveloper/tailwindstarter17.png)
 
@@ -505,7 +505,7 @@ RichText 出の表示に関する定義を追加していく必要がありま�
 上記の HTML であれば、リッチテキストで利用していたリストのスタイルをそのまま利用することができます。そこで、以下のファイルを追加します。
 
 ```css
-// headapps\tailwind-starter\src\styles\components\LinkList.css
+// src\styles\components\LinkList.css
 .component.link-list {
   ul {
     @apply list-disc pb-2 pl-3 pt-2;
@@ -521,7 +521,7 @@ RichText 出の表示に関する定義を追加していく必要がありま�
 }
 ```
 
-上記のファイルを `headapps\tailwind-starter\src\styles\globals.css` に対して追加して、リンクリストを表示した画面となります。
+上記のファイルを `src\styles\globals.css` に対して追加して、リンクリストを表示した画面となります。
 
 ![LinkList with List](../../../assets/xmcdeveloper/tailwindstarter19.png)
 
@@ -637,7 +637,7 @@ Navigation コンポーネントにはいくつかのスタイルが用意され
 実際のスタイルシートとしては、 **navigation-main** でトップレベルの表示部分を調整し、**navigation-main-vertical** で縦にメニューを表示をして、**navigation-main-horizontal** で横にサブメニューを表示するようなスタイルシートを実装する形です。以下が完成したコードになります。
 
 ```css
-// headapps\tailwind-starter\src\styles\components\Navigation.css
+// src\styles\components\Navigation.css
 .component.navigation.navigation-main {
   .rel-level1 {
     @apply relative float-left mx-3;
