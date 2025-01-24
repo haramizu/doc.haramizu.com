@@ -253,7 +253,7 @@ These definitions are defined as items within the site being built. Refer to the
 Spacing and Content alignment are general display options that can also be used for images. Create two files for common styles.
 
 ```css
-// headapps\tailwind-starter\src\styles\common\alignment.css
+// src\styles\common\alignment.css
 .position-left {
   @apply flex;
   @apply justify-start;
@@ -271,7 +271,7 @@ Spacing and Content alignment are general display options that can also be used 
 ```
 
 ```css
-// headapps\tailwind-starter\src\styles\common\highlight.css
+// src\styles\common\highlight.css
 .highlighted-left {
   @apply border-l-4;
   @apply border-blue-500;
@@ -294,7 +294,7 @@ Spacing and Content alignment are general display options that can also be used 
 ```
 
 ```css
-// headapps\tailwind-starter\src\styles\common\spacing.css
+// src\styles\common\spacing.css
 .indent {
   @apply mx-3;
 }
@@ -311,7 +311,7 @@ Spacing and Content alignment are general display options that can also be used 
 Add the above three files to the globals.css file.
 
 ```css {8-11}
-// headapps\tailwind-starter\src\styles\globals.css
+// src\styles\globals.css
 @import './app.css';
 
 @tailwind base;
