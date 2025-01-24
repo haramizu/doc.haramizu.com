@@ -82,26 +82,23 @@ Next.js Starter Kit は Bootstrap を CSS フレームワークとして利用�
 1. まず、Tailwind CSS をインストールします
 
    ```bash
-   npm install -D tailwindcss postcss autoprefixer
-   npx tailwindcss init -p
+   npm install tailwindcss @tailwindcss/postcss postcss
    ```
 
-2. `headapps/nextjs-starter/src/assets/app.css` のファイルをコピーして `headapps/tailwind-starter/src/styles/app.css` を作成します。
+2. `src/assets/app.css` のファイルをコピーして `src/styles/app.css` を作成します。
 
-3. `headapps/tailwind-starter/src/styles/globals.css` のファイルを作成して、以下のスタイルを設定します。
+3. `src/styles/globals.css` のファイルを作成して、以下のスタイルを設定します。
 
    ```css
-   @import './app.css';
+   @import 'tailwindcss';
 
-   @tailwind base;
-   @tailwind components;
-   @tailwind utilities;
+   @import './app.css';
    ```
 
-4. スタイルシートを読み込んでいる `headapps/tailwind-starter/src/pages/_app.tsx` のコードを以下のように変更します。
+4. スタイルシートを読み込んでいる `src/pages/_app.tsx` のコードを以下のように変更します。
 
    ```diff lang="tsx"
-   // headapps/tailwind-starter/src/pages/_app.tsx
+   // src/pages/_app.tsx
    import type { AppProps } from 'next/app';
    import { I18nProvider } from 'next-localization';
    import { SitecorePageProps } from 'lib/page-props';
@@ -111,10 +108,22 @@ Next.js Starter Kit は Bootstrap を CSS フレームワークとして利用�
    +import '@/styles/globals.css';
    ```
 
-5. 上記のスタイルシート読み込みの際に `@/` を利用してファイルを指定しています。これを有効にするためには、Typescript の設定 tsconfig.json に対して以下の行を追加してください。
+5. `postcss.config.mjs` のファイルを作成して、以下のコードを追加します。
+
+   ```js {4}
+   // postcss.config.mjs
+   const config = {
+     plugins: {
+       '@tailwindcss/postcss': {},
+     },
+   };
+   export default config;
+   ```
+
+6. 上記のスタイルシート読み込みの際に `@/` を利用してファイルを指定しています。これを有効にするためには、Typescript の設定 tsconfig.json に対して以下の行を追加してください。
 
    ```json {12}
-   // headapps/tailwind-starter/tsconfig.json
+   // tsconfig.json
    {
      "compilerOptions": {
        "baseUrl": ".",
@@ -141,7 +150,7 @@ Next.js Starter Kit は Bootstrap を CSS フレームワークとして利用�
 
 <Steps>
 
-1. スタイルシート関連のファイルがある `headapps/tailwind-starter/src/assets` のフォルダを削除します。
+1. スタイルシート関連のファイルがある `src/assets` のフォルダを削除します。
 
 2. bootstrap および font-awesome のパッケージを削除します。
 
@@ -172,10 +181,10 @@ Next.js Starter Kit は Bootstrap を CSS フレームワークとして利用�
 </div>
 ```
 
-まず横に並べるためには、flex クラスを追加する必要があります。そこで、`headapps/tailwind-starter/src/styles/components/ColumnSplitter.css` というファイルを作成して、以下のコードを適用します。
+まず横に並べるためには、flex クラスを追加する必要があります。そこで、`src/styles/components/ColumnSplitter.css` というファイルを作成して、以下のコードを適用します。
 
 ```css
-// headapps/tailwind-starter/src/styles/components/ColumnSplitter.css
+// src/styles/components/ColumnSplitter.css
 .column-splitter {
   @apply flex;
 }
@@ -190,7 +199,7 @@ Next.js Starter Kit は Bootstrap を CSS フレームワークとして利用�
 そこで、設定ファイルとなる tailwind.config.js に対して、salelist で指定をして利用できるように、以下のコードを追加をします。
 
 ```js {5-10}
-// headapps/tailwind-starter/tailwind.config.js
+// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [],
@@ -699,3 +708,6 @@ Navigation コンポーネントにはいくつかのスタイルが用意され
   target="_blank"
 />
 
+## 更新情報
+
+- 2024-01-24 Tailwind CSS 4.0 に対応
