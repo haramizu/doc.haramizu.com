@@ -70,29 +70,26 @@ First, rewrite to enable the use of Tailwind CSS.
 
 <Steps>
 
-1. First, install Tailwind CSS
+1. First, install Tailwind CSS.
 
    ```bash
-   npm install -D tailwindcss postcss autoprefixer
-   npx tailwindcss init -p
+   npm install tailwindcss @tailwindcss/postcss postcss
    ```
 
-2. Copy the file `headapps/nextjs-starter/src/assets/app.css` and create `headapps/tailwind-starter/src/styles/app.css`.
+2. Copy the `src/assets/app.css` file and create `src/styles/app.css`.
 
-3. Create the file `headapps/tailwind-starter/src/styles/globals.css` and set the following styles.
+3. Create the `src/styles/globals.css` file and set the following styles.
 
    ```css
-   @import './app.css';
+   @import 'tailwindcss';
 
-   @tailwind base;
-   @tailwind components;
-   @tailwind utilities;
+   @import './app.css';
    ```
 
-4. Change the code of `headapps/tailwind-starter/src/pages/_app.tsx` that loads the stylesheet as follows.
+4. Modify the code in `src/pages/_app.tsx` to load the stylesheet as follows.
 
    ```diff lang="tsx"
-   // headapps/tailwind-starter/src/pages/_app.tsx
+   // src/pages/_app.tsx
    import type { AppProps } from 'next/app';
    import { I18nProvider } from 'next-localization';
    import { SitecorePageProps } from 'lib/page-props';
@@ -102,10 +99,22 @@ First, rewrite to enable the use of Tailwind CSS.
    +import '@/styles/globals.css';
    ```
 
-5. When loading the stylesheet above, the file is specified using `@/`. To enable this, add the following line to the Typescript settings tsconfig.json.
+5. Create the `postcss.config.mjs` file and add the following code.
+
+   ```js {4}
+   // postcss.config.mjs
+   const config = {
+     plugins: {
+       '@tailwindcss/postcss': {},
+     },
+   };
+   export default config;
+   ```
+
+6. To enable the use of `@/` when loading the stylesheet, add the following lines to the Typescript configuration `tsconfig.json`.
 
    ```json {12}
-   // headapps/tailwind-starter/tsconfig.json
+   // tsconfig.json
    {
      "compilerOptions": {
        "baseUrl": ".",
@@ -132,7 +141,7 @@ Next, remove the Bootstrap-related files that will no longer be used.
 
 <Steps>
 
-1. Delete the folder `headapps/tailwind-starter/src/assets` where the stylesheet-related files are located.
+1. Delete the folder `src/assets` where the stylesheet-related files are located.
 
 2. Uninstall the bootstrap and font-awesome packages.
 
@@ -163,10 +172,10 @@ The expected result is to be arranged horizontally, but it is arranged verticall
 </div>
 ```
 
-To arrange them horizontally, add the flex class. Create a file `headapps/tailwind-starter/src/styles/components/ColumnSplitter.css` and apply the following code.
+To arrange them horizontally, add the flex class. Create a file `src/styles/components/ColumnSplitter.css` and apply the following code.
 
 ```css
-// headapps/tailwind-starter/src/styles/components/ColumnSplitter.css
+// src/styles/components/ColumnSplitter.css
 .column-splitter {
   @apply flex;
 }
@@ -181,7 +190,7 @@ They are arranged horizontally, but the width specified by `basis-1/2` is not ap
 Therefore, add the following code to the configuration file tailwind.config.js to enable the use of salelist.
 
 ```js {5-10}
-// headapps/tailwind-starter/tailwind.config.js
+// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [],
@@ -357,7 +366,7 @@ When using Tailwind CSS, if nothing is defined, it will be displayed flat as sho
 We need to add definitions for the display in RichText. This also needs to be applied to tags like h1, so let's create a file to define the styles for RichText as follows:
 
 ```css
-// headapps/tailwind-starter/src/styles/components/RichText.css
+// src/styles/components/RichText.css
 .component.rich-text {
   h1 {
     @apply text-4xl;
@@ -385,7 +394,7 @@ We need to add definitions for the display in RichText. This also needs to be ap
 }
 ```
 
-After importing the above styles in the `headapps/tailwind-starter/src/styles/globals.css` file, you can preview the changes and see that the display has been updated.
+After importing the above styles in the `src/styles/globals.css` file, you can preview the changes and see that the display has been updated.
 
 ![HTML List](../../../../assets/xmcdeveloper/tailwindstarter15.png)
 
@@ -400,7 +409,7 @@ There are also sample values prepared to display styles for Rich Text.
 
 </FileTree>
 
-To enable this and change the list display, add the following code to `headapps/tailwind-starter/src/styles/components/RichText.css`:
+To enable this and change the list display, add the following code to `src/styles/components/RichText.css`:
 
 ```css
 .component.rich-text.rich-text-lists {
@@ -440,7 +449,7 @@ Containers can hold various components and can be very useful for controlling di
 To define only the background color part, add the following stylesheet:
 
 ```css
-// headapps/tailwind-starter/src/styles/components/Container.css
+// src/styles/components/Container.css
 .container-dark-background {
   @apply bg-gray-800 text-white;
 }
@@ -458,7 +467,7 @@ To define only the background color part, add the following stylesheet:
 }
 ```
 
-Add the above file to `headapps/tailwind-starter/src/styles/globals.css` to enable the container background colors. Below is the result of placing a container and specifying the background color.
+Add the above file to `src/styles/globals.css` to enable the container background colors. Below is the result of placing a container and specifying the background color.
 
 ![Container background](../../../../assets/xmcdeveloper/tailwindstarter17.png)
 
@@ -496,7 +505,7 @@ The actual HTML output is as follows:
 For the above HTML, you can use the list styles from RichText. Therefore, add the following file:
 
 ```css
-// headapps/tailwind-starter/src/styles/components/LinkList.css
+// src/styles/components/LinkList.css
 .component.link-list {
   ul {
     @apply list-disc pb-2 pl-3 pt-2;
@@ -512,7 +521,7 @@ For the above HTML, you can use the list styles from RichText. Therefore, add th
 }
 ```
 
-Add the above file to `headapps/tailwind-starter/src/styles/globals.css` to display the link list as shown below.
+Add the above file to `src/styles/globals.css` to display the link list as shown below.
 
 ![LinkList with List](../../../../assets/xmcdeveloper/tailwindstarter19.png)
 
@@ -628,7 +637,7 @@ The styles added to the display options for the menu are defined in the site's s
 The actual stylesheet will adjust the top-level display with **navigation-main**, display the menu vertically with **navigation-main-vertical**, and display the submenu horizontally with **navigation-main-horizontal**. Below is the completed code:
 
 ```css
-// headapps/tailwind-starter/src/styles/components/Navigation.css
+// src/styles/components/Navigation.css
 .component.navigation.navigation-main {
   .rel-level1 {
     @apply relative float-left mx-3;
@@ -690,3 +699,6 @@ This time, we introduced the initial steps for using Tailwind CSS stylesheets ba
   target="_blank"
 />
 
+## Update Information
+
+- 2024-01-24 Upgrade to Tailwind CSS 4.0
