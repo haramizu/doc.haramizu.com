@@ -202,14 +202,18 @@ export const Default = (): JSX.Element => {
 
   useEffect(() => {}, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
   return (
     <div>
-      <button onClick={toggleTheme}>
-        {theme ? (theme === 'light' ? 'Dark Mode' : 'Light Mode') : 'Loading...'}
+      <button onClick={() => setTheme('light')} disabled={theme === 'light'}>
+        Light
+      </button>
+      <span> - </span>
+      <button onClick={() => setTheme('dark')} disabled={theme === 'dark'}>
+        Dark
+      </button>
+      <span> - </span>
+      <button onClick={() => setTheme('system')} disabled={theme === 'system'}>
+        System
       </button>
     </div>
   );
