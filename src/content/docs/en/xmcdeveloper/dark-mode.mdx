@@ -6,7 +6,6 @@ sidebar:
   badge:
     text: New
 publishDate: 2025-01-24
-lastUpdated: 2025-01-24
 ---
 
 import { Steps, LinkCard, FileTree } from '@astrojs/starlight/components';
@@ -225,6 +224,59 @@ After rewriting the code, when you check the display on the new page, you can se
 ![Theme Swicther](/xmcdeveloper/darkmode09.gif)
 
 You can now switch between dark mode and light mode.
+
+## Adding Styles
+
+In the above code, the styles are fixed, so you cannot use the editing options on the Page Builder screen to adjust the position, etc. Therefore, rewrite the code as follows to make the style data available. The changed parts of the code are as follows.
+
+```ts {2,5-8,10-11,16-17,29-30}
+// src\components\ThemeSwitcher.tsx
+import { ComponentParams, ComponentRendering } from '@sitecore-jss/sitecore-jss-nextjs';
+import { useTheme } from 'next-themes';
+
+interface ComponentProps {
+  rendering: ComponentRendering & { params: ComponentParams };
+  params: ComponentParams;
+}
+
+export const Default = (props: ComponentProps): JSX.Element => {
+  const styles = `${props.params.GridParameters ?? ''} ${props.params.Styles ?? ''}`.trimEnd();
+
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <div className={`component theme-switcher ${styles}`}>
+      <div className="component-content">
+        <button onClick={() => setTheme('light')} disabled={theme === 'light'}>
+          Light
+        </button>
+        <span> - </span>
+        <button onClick={() => setTheme('dark')} disabled={theme === 'dark'}>
+          Dark
+        </button>
+        <span> - </span>
+        <button onClick={() => setTheme('system')} disabled={theme === 'system'}>
+          System
+        </button>
+      </div>
+    </div>
+  );
+};
+```
+
+The actual output is as follows, and you can see that the styles are applied.
+
+```html
+<div class="component theme-switcher indent-top indent basis-full">
+  <div class="component-content">
+    <button>Light</button>
+    <span> - </span>
+    <button>Dark</button>
+    <span> - </span>
+    <button>System</button>
+  </div>
+</div>
+```
 
 ## Summary
 

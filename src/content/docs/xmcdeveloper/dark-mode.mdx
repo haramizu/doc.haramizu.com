@@ -6,7 +6,6 @@ sidebar:
   badge:
     text: 新着
 publishDate: 2025-01-24
-lastUpdated: 2025-01-24
 ---
 
 import { Steps, LinkCard, FileTree } from '@astrojs/starlight/components';
@@ -195,12 +194,9 @@ Page Builder を立ち上げて、コンポーネント一覧に表示されて�
 ```ts
 // src/components/ThemeSwitcher.tsx
 import { useTheme } from 'next-themes';
-import React, { useEffect } from 'react';
 
 export const Default = (): JSX.Element => {
   const { theme, setTheme } = useTheme();
-
-  useEffect(() => {}, [theme]);
 
   return (
     <div>
@@ -225,6 +221,59 @@ export const Default = (): JSX.Element => {
 ![Theme Swicther](/xmcdeveloper/darkmode09.gif)
 
 ダークモードとライトモードの切り替えができるようになりました。
+
+## スタイルの追加
+
+上記のコードでは、スタイルが固定されているため Page Builder の画面で編集オプションを利用して位置などの調整をすることができません。そこでスタイルのデータを利用できるように以下のようにコードを書き換えます。変更されているコードは以下の部分になります。
+
+```ts {2,5-8,10-11,16-17,29-30}
+// src\components\ThemeSwitcher.tsx
+import { ComponentParams, ComponentRendering } from '@sitecore-jss/sitecore-jss-nextjs';
+import { useTheme } from 'next-themes';
+
+interface ComponentProps {
+  rendering: ComponentRendering & { params: ComponentParams };
+  params: ComponentParams;
+}
+
+export const Default = (props: ComponentProps): JSX.Element => {
+  const styles = `${props.params.GridParameters ?? ''} ${props.params.Styles ?? ''}`.trimEnd();
+
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <div className={`component theme-switcher ${styles}`}>
+      <div className="component-content">
+        <button onClick={() => setTheme('light')} disabled={theme === 'light'}>
+          Light
+        </button>
+        <span> - </span>
+        <button onClick={() => setTheme('dark')} disabled={theme === 'dark'}>
+          Dark
+        </button>
+        <span> - </span>
+        <button onClick={() => setTheme('system')} disabled={theme === 'system'}>
+          System
+        </button>
+      </div>
+    </div>
+  );
+};
+```
+
+実際の出力結果は以下の通りとなり、スタイルが適用されていることが分かります。
+
+```html
+<div class="component theme-switcher indent-top indent basis-full">
+  <div class="component-content">
+    <button>Light</button>
+    <span> - </span>
+    <button>Dark</button>
+    <span> - </span>
+    <button>System</button>
+  </div>
+</div>
+```
 
 ## まとめ
 
