@@ -82,7 +82,7 @@ Next.js Starter Kit は Bootstrap を CSS フレームワークとして利用�
 1. まず、Tailwind CSS をインストールします
 
    ```bash
-   npm install tailwindcss @tailwindcss/postcss postcss
+   npm install -D tailwindcss postcss autoprefixer
    ```
 
 2. `src/assets/app.css` のファイルをコピーして `src/styles/app.css` を作成します。
@@ -90,7 +90,9 @@ Next.js Starter Kit は Bootstrap を CSS フレームワークとして利用�
 3. `src/styles/globals.css` のファイルを作成して、以下のスタイルを設定します。
 
    ```css
-   @import 'tailwindcss';
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
 
    @import './app.css';
    ```
@@ -111,13 +113,13 @@ Next.js Starter Kit は Bootstrap を CSS フレームワークとして利用�
 5. `postcss.config.mjs` のファイルを作成して、以下のコードを追加します。
 
    ```js {4}
-   // postcss.config.mjs
-   const config = {
+   // postcss.config.js
+   module.exports = {
      plugins: {
-       '@tailwindcss/postcss': {},
+       tailwindcss: {},
+       autoprefixer: {},
      },
    };
-   export default config;
    ```
 
 6. 上記のスタイルシート読み込みの際に `@/` を利用してファイルを指定しています。これを有効にするためには、Typescript の設定 tsconfig.json に対して以下の行を追加してください。
@@ -708,6 +710,3 @@ Navigation コンポーネントにはいくつかのスタイルが用意され
   target="_blank"
 />
 
-## 更新情報
-
-- 2024-01-24 Tailwind CSS 4.0 に対応

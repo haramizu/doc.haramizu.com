@@ -73,7 +73,7 @@ First, rewrite to enable the use of Tailwind CSS.
 1. First, install Tailwind CSS.
 
    ```bash
-   npm install tailwindcss @tailwindcss/postcss postcss
+   npm install -D tailwindcss postcss autoprefixer
    ```
 
 2. Copy the `src/assets/app.css` file and create `src/styles/app.css`.
@@ -81,7 +81,9 @@ First, rewrite to enable the use of Tailwind CSS.
 3. Create the `src/styles/globals.css` file and set the following styles.
 
    ```css
-   @import 'tailwindcss';
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
 
    @import './app.css';
    ```
@@ -102,13 +104,13 @@ First, rewrite to enable the use of Tailwind CSS.
 5. Create the `postcss.config.mjs` file and add the following code.
 
    ```js {4}
-   // postcss.config.mjs
-   const config = {
+   // postcss.config.js
+   module.exports = {
      plugins: {
-       '@tailwindcss/postcss': {},
+       tailwindcss: {},
+       autoprefixer: {},
      },
    };
-   export default config;
    ```
 
 6. To enable the use of `@/` when loading the stylesheet, add the following lines to the Typescript configuration `tsconfig.json`.
@@ -699,6 +701,3 @@ This time, we introduced the initial steps for using Tailwind CSS stylesheets ba
   target="_blank"
 />
 
-## Update Information
-
-- 2024-01-24 Upgrade to Tailwind CSS 4.0
