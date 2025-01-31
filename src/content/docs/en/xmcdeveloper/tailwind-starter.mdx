@@ -131,6 +131,50 @@ First, rewrite to enable the use of Tailwind CSS.
        },
    ```
 
+7. Update the `tailwind.config.js` file as follows for the Sitecore environment.
+
+   ```js
+   // tailwind.config.js
+   /** @type {import('tailwindcss').Config} */
+   module.exports = {
+     darkMode: ['class'],
+     content: ['./src/**/*.{js,ts,jsx,tsx}'],
+     safelist: [
+       {
+         pattern: /basis-/,
+       },
+       {
+         pattern: /self-/,
+       },
+       {
+         pattern: /hidden/,
+         variants: ['sm', 'md', 'lg', 'xl', '2xl'],
+       },
+       {
+         pattern: /block/,
+         variants: ['sm', 'md', 'lg', 'xl', '2xl'],
+       },
+     ],
+     theme: {
+       extend: {},
+     },
+     plugins: [],
+   };
+   ```
+
+8. Rewrite the following code in the file `src\Layout.tsx` to make it responsive.
+
+   ```ts {7}
+   // src\Layout.tsx
+     return (
+       <>
+         <Scripts />
+         <Head>
+           <title>{fields?.Title?.value?.toString() || 'Page'}</title>
+           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+           <link rel="icon" href={`${publicUrl}/favicon.ico`} />
+   ```
+
 </Steps>
 
 Now Tailwind CSS is applied. You can confirm that the stylesheet is applied by accessing it with npm run start:connected and checking with developer tools since there is no content yet.
@@ -701,3 +745,6 @@ This time, we introduced the initial steps for using Tailwind CSS stylesheets ba
   target="_blank"
 />
 
+## Update Information
+
+2025-01-31 Added Tailwind CSS responsive code

@@ -140,6 +140,50 @@ Next.js Starter Kit は Bootstrap を CSS フレームワークとして利用�
        },
    ```
 
+7. `tailwind.config.js` のファイルに関して、Sitecore の環境に合わせて以下のようにアップデートします。
+
+   ```js
+   // tailwind.config.js
+   /** @type {import('tailwindcss').Config} */
+   module.exports = {
+     darkMode: ['class'],
+     content: ['./src/**/*.{js,ts,jsx,tsx}'],
+     safelist: [
+       {
+         pattern: /basis-/,
+       },
+       {
+         pattern: /self-/,
+       },
+       {
+         pattern: /hidden/,
+         variants: ['sm', 'md', 'lg', 'xl', '2xl'],
+       },
+       {
+         pattern: /block/,
+         variants: ['sm', 'md', 'lg', 'xl', '2xl'],
+       },
+     ],
+     theme: {
+       extend: {},
+     },
+     plugins: [],
+   };
+   ```
+
+8. レスポンシブ対応をするために `src\Layout.tsx` のファイルで以下のコードを書き換えます。
+
+   ```ts {7}
+   // src\Layout.tsx
+     return (
+       <>
+         <Scripts />
+         <Head>
+           <title>{fields?.Title?.value?.toString() || 'Page'}</title>
+           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+           <link rel="icon" href={`${publicUrl}/favicon.ico`} />
+   ```
+
 </Steps>
 
 これで Tailwind CSS を適用できている状況です。実際に npm run start:connected でアクセスをして、コンテンツはまだ無いため開発者ツールで確認をすると、スタイルシートが適用されていることを確認することができます。
@@ -710,3 +754,6 @@ Navigation コンポーネントにはいくつかのスタイルが用意され
   target="_blank"
 />
 
+## 更新情報
+
+2025-01-31 Tailwind CSS のレスポンシブ対応のコードを追加しました
