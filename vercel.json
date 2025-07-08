@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/",
+      "destination": "https://www.haramizu.com/ja/",
+      "permanent": true
+    },
+    {
       "source": "/en/",
       "destination": "https://www.haramizu.com/en/",
       "permanent": true
