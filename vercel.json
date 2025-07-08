@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/about/overview/",
+      "destination": "https://www.haramizu.com/ja/",
+      "permanent": true
+    },
+    {
+      "source": "/en/about/overview/",
+      "destination": "https://www.haramizu.com/en/",
+      "permanent": true
+    }
+  ]
+}
+
