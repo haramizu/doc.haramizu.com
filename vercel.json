@@ -1,13 +1,514 @@
 {
   "redirects": [
     {
+      "source": "/en/",
+      "destination": "https://www.haramizu.com/en/",
+      "permanent": true
+    },
+    {
       "source": "/about/overview/",
       "destination": "https://www.haramizu.com/ja/",
       "permanent": true
     },
     {
+      "source": "/astro/starlight/",
+      "destination": "https://www.haramizu.com/ja/",
+      "permanent": true
+    },
+    {
+      "source": "/astro/starlight-blog/",
+      "destination": "https://www.haramizu.com/ja/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/haramizu-com-renewal/",
+      "destination": "https://www.haramizu.com/ja/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/2024/11-21/",
+      "destination": "https://www.haramizu.com/ja/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/2024/11-25/",
+      "destination": "https://www.haramizu.com/ja/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/2024/12-02/",
+      "destination": "https://www.haramizu.com/ja/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-portal/overview/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/cloud-portal/cloud-portal-overview/",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-portal/join-sitecore/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/cloud-portal/join-sitecore/",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-portal/manage-user/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/cloud-portal/manage-user/",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-portal/sso/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/cloud-portal/sso/",
+      "permanent": true
+    },
+    {
+      "source": "/cloud-portal/support-access/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/cloud-portal/support-access/",
+      "permanent": true
+    },
+    {
+      "source": "/xmc/overview/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/xm-cloud/xmc-overview/",
+      "permanent": true
+    },
+    {
+      "source": "/xmc/xmclouddeploy/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/xm-cloud/xmc-deploy/",
+      "permanent": true
+    },
+    {
+      "source": "/xmcdeveloper/create-template/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/xm-cloud/xmc-create-template/",
+      "permanent": true
+    },
+    {
+      "source": "/xmcdeveloper/developer-environment/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/xm-cloud/xmc-developer-environment/",
+      "permanent": true
+    },
+    {
+      "source": "/xmcdeveloper/tailwind-starter/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/xm-cloud/xmc-tailwind-starter/",
+      "permanent": true
+    },
+    {
+      "source": "/xmcdeveloper/cretea-component/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/xm-cloud/xmc-create-component/",
+      "permanent": true
+    },
+    {
+      "source": "/xmcdeveloper/dark-mode/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/xm-cloud/xmc-dark-mode/",
+      "permanent": true
+    },
+    {
+      "source": "/ch/connect-for-content-hub/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/content/connect-for-content-hub/",
+      "permanent": true
+    },
+    {
+      "source": "/search/overview/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/search/search-overview/",
+      "permanent": true
+    },
+    {
+      "source": "/search/domain-settings/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/search/search-domain-settings/",
+      "permanent": true
+    },
+    {
+      "source": "/search/entity/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/search/search-entity/",
+      "permanent": true
+    },
+    {
+      "source": "/search/document-extractor/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/search/search-document-extractor/",
+      "permanent": true
+    },
+    {
+      "source": "/search/locale-extractor/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/search/search-locale-extractor/",
+      "permanent": true
+    },
+    {
+      "source": "/search/developer-tools//",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/search/search-developer-tools/",
+      "permanent": true
+    },
+    {
+      "source": "/cdp-personalize/overview/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-cdp-personalize/",
+      "permanent": true
+    },
+    {
+      "source": "/personalize/template-type/",
+      "destination": "https://www.haramizu.com/ja/",
+      "permanent": true
+    },
+    {
+      "source": "/personalize/using-sdk/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-cdp-personalize/sc-personalize-using-sdk/",
+      "permanent": true
+    },
+    {
+      "source": "/personalize/tampermonkey/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-cdp-personalize/sc-personalize-tampermonkey/",
+      "permanent": true
+    },
+    {
+      "source": "/personalize/google-tag-manager/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-cdp-personalize/sc-personalize-google-tag-manager/",
+      "permanent": true
+    },
+    {
+      "source": "/personalize/create-experience/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-cdp-personalize/sc-personalize-create-experience/",
+      "permanent": true
+    },
+    {
+      "source": "/personalize/create-custom-experience/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-cdp-personalize/sc-personalize-create-custom-experience/",
+      "permanent": true
+    },
+    {
+      "source": "/personalize/create-experiments/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-cdp-personalize/sc-personalize-create-experiments/",
+      "permanent": true
+    },
+    {
+      "source": "/personalize/sample/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-personalize-sample/",
+      "permanent": true
+    },
+    {
+      "source": "/cdp/guest/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-cdp-personalize/sc-cdp-guest/",
+      "permanent": true
+    },
+    {
+      "source": "/cdp/postman/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-cdp-personalize/sc-cdp-postman/",
+      "permanent": true
+    },
+    {
+      "source": "/nextjs/overview/",
+      "destination": "https://www.haramizu.com/ja/docs/next-js/",
+      "permanent": true
+    },
+    {
+      "source": "/nextjs/gtm/",
+      "destination": "https://www.haramizu.com/ja/docs/next-js/content/nextjs-google-tag-manager/",
+      "permanent": true
+    },
+    {
+      "source": "/nextjs/googlemaps/",
+      "destination": "https://www.haramizu.com/ja/docs/next-js/content/nextjs-googlemaps/",
+      "permanent": true
+    },
+    {
+      "source": "/nextjs/sitecore-search/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/content/sitecore-search-witn-next-js/",
+      "permanent": true
+    },
+    {
+      "source": "/nextjs/shadcn-ui/",
+      "destination": "https://www.haramizu.com/ja/docs/next-js/content/next-js-tailwind-css-shadcn-ui/",
+      "permanent": true
+    },
+    {
+      "source": "/tools/auth0/",
+      "destination": "https://www.haramizu.com/ja/docs/auth0/content/using-auth0/",
+      "permanent": true
+    },
+    {
+      "source": "/sample/alert-bar/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-personalize-sample/sc-alert-bar/",
+      "permanent": true
+    },
+    {
+      "source": "/sample/corner-popup/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-personalize-sample/sc-corner-popup/",
+      "permanent": true
+    },
+    {
+      "source": "/sample/email-capture-bar/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-personalize-sample/sc-email-capture-corner/",
+      "permanent": true
+    },
+    {
+      "source": "/sample/email-capture-bar/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-personalize-sample/sc-email-capture-bar/",
+      "permanent": true
+    },
+    {
+      "source": "/sample/notification-widget/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-personalize-sample/sc-notification-widget/",
+      "permanent": true
+    },
+    {
+      "source": "/sample/popup-takeover/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-personalize-sample/sc-popup-takeover/",
+      "permanent": true
+    },
+    {
+      "source": "/sample/slidebar/",
+      "destination": "https://www.haramizu.com/ja/docs/sitecore/sitecore-personalize-sample/sc-slidebar/",
+      "permanent": true
+    },
+
+    {
       "source": "/en/about/overview/",
       "destination": "https://www.haramizu.com/en/",
+      "permanent": true
+    },
+    {
+      "source": "/en/astro/starlight/",
+      "destination": "https://www.haramizu.com/en/",
+      "permanent": true
+    },
+    {
+      "source": "/en/astro/starlight-blog/",
+      "destination": "https://www.haramizu.com/en/",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/haramizu-com-renewal/",
+      "destination": "https://www.haramizu.com/en/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/2024/11-21/",
+      "destination": "https://www.haramizu.com/en/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/2024/11-25/",
+      "destination": "https://www.haramizu.com/en/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/en/blog/2024/12-02/",
+      "destination": "https://www.haramizu.com/en/blog/",
+      "permanent": true
+    },
+    {
+      "source": "/en/cloud-portal/overview/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/cloud-portal/cloud-portal-overview/",
+      "permanent": true
+    },
+    {
+      "source": "/en/cloud-portal/join-sitecore/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/cloud-portal/join-sitecore/",
+      "permanent": true
+    },
+    {
+      "source": "/en/cloud-portal/manage-user/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/cloud-portal/manage-user/",
+      "permanent": true
+    },
+    {
+      "source": "/en/cloud-portal/sso/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/cloud-portal/sso/",
+      "permanent": true
+    },
+    {
+      "source": "/en/cloud-portal/support-access/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/cloud-portal/support-access/",
+      "permanent": true
+    },
+    {
+      "source": "/en/xmc/overview/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/xm-cloud/xmc-overview/",
+      "permanent": true
+    },
+    {
+      "source": "/en/xmc/xmclouddeploy/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/xm-cloud/xmc-deploy/",
+      "permanent": true
+    },
+    {
+      "source": "/en/xmcdeveloper/create-template/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/xm-cloud/xmc-create-template/",
+      "permanent": true
+    },
+    {
+      "source": "/en/xmcdeveloper/developer-environment/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/xm-cloud/xmc-developer-environment/",
+      "permanent": true
+    },
+    {
+      "source": "/en/xmcdeveloper/tailwind-starter/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/xm-cloud/xmc-tailwind-starter/",
+      "permanent": true
+    },
+    {
+      "source": "/en/xmcdeveloper/cretea-component/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/xm-cloud/xmc-create-component/",
+      "permanent": true
+    },
+    {
+      "source": "/en/xmcdeveloper/dark-mode/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/xm-cloud/xmc-dark-mode/",
+      "permanent": true
+    },
+    {
+      "source": "/en/ch/connect-for-content-hub/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/content/connect-for-content-hub/",
+      "permanent": true
+    },
+    {
+      "source": "/en/search/overview/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/search/search-overview/",
+      "permanent": true
+    },
+    {
+      "source": "/en/search/domain-settings/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/search/search-domain-settings/",
+      "permanent": true
+    },
+    {
+      "source": "/en/search/entity/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/search/search-entity/",
+      "permanent": true
+    },
+    {
+      "source": "/en/search/document-extractor/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/search/search-document-extractor/",
+      "permanent": true
+    },
+    {
+      "source": "/en/search/locale-extractor/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/search/search-locale-extractor/",
+      "permanent": true
+    },
+    {
+      "source": "/en/search/developer-tools//",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/search/search-developer-tools/",
+      "permanent": true
+    },
+    {
+      "source": "/en/cdp-personalize/overview/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-cdp-personalize/",
+      "permanent": true
+    },
+    {
+      "source": "/en/personalize/template-type/",
+      "destination": "https://www.haramizu.com/en/",
+      "permanent": true
+    },
+    {
+      "source": "/en/personalize/using-sdk/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-cdp-personalize/sc-personalize-using-sdk/",
+      "permanent": true
+    },
+    {
+      "source": "/en/personalize/tampermonkey/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-cdp-personalize/sc-personalize-tampermonkey/",
+      "permanent": true
+    },
+    {
+      "source": "/en/personalize/google-tag-manager/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-cdp-personalize/sc-personalize-google-tag-manager/",
+      "permanent": true
+    },
+    {
+      "source": "/en/personalize/create-experience/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-cdp-personalize/sc-personalize-create-experience/",
+      "permanent": true
+    },
+    {
+      "source": "/en/personalize/create-custom-experience/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-cdp-personalize/sc-personalize-create-custom-experience/",
+      "permanent": true
+    },
+    {
+      "source": "/en/personalize/create-experiments/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-cdp-personalize/sc-personalize-create-experiments/",
+      "permanent": true
+    },
+    {
+      "source": "/en/personalize/sample/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-personalize-sample/",
+      "permanent": true
+    },
+    {
+      "source": "/en/cdp/guest/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-cdp-personalize/sc-cdp-guest/",
+      "permanent": true
+    },
+    {
+      "source": "/en/cdp/postman/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-cdp-personalize/sc-cdp-postman/",
+      "permanent": true
+    },
+    {
+      "source": "/en/nextjs/overview/",
+      "destination": "https://www.haramizu.com/en/docs/next-js/",
+      "permanent": true
+    },
+    {
+      "source": "/en/nextjs/gtm/",
+      "destination": "https://www.haramizu.com/en/docs/next-js/content/nextjs-google-tag-manager/",
+      "permanent": true
+    },
+    {
+      "source": "/en/nextjs/googlemaps/",
+      "destination": "https://www.haramizu.com/en/docs/next-js/content/nextjs-googlemaps/",
+      "permanent": true
+    },
+    {
+      "source": "/en/nextjs/sitecore-search/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/content/sitecore-search-witn-next-js/",
+      "permanent": true
+    },
+    {
+      "source": "/en/nextjs/shadcn-ui/",
+      "destination": "https://www.haramizu.com/en/docs/next-js/content/next-js-tailwind-css-shadcn-ui/",
+      "permanent": true
+    },
+    {
+      "source": "/en/tools/auth0/",
+      "destination": "https://www.haramizu.com/en/docs/auth0/content/using-auth0/",
+      "permanent": true
+    },
+    {
+      "source": "/en/sample/alert-bar/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-personalize-sample/sc-alert-bar/",
+      "permanent": true
+    },
+    {
+      "source": "/en/sample/corner-popup/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-personalize-sample/sc-corner-popup/",
+      "permanent": true
+    },
+    {
+      "source": "/en/sample/email-capture-bar/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-personalize-sample/sc-email-capture-corner/",
+      "permanent": true
+    },
+    {
+      "source": "/en/sample/email-capture-bar/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-personalize-sample/sc-email-capture-bar/",
+      "permanent": true
+    },
+    {
+      "source": "/en/sample/email-capture-corner/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-personalize-sample/sc-email-capture-corner/",
+      "permanent": true
+    },
+    {
+      "source": "/en/sample/notification-widget/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-personalize-sample/sc-notification-widget/",
+      "permanent": true
+    },
+    {
+      "source": "/en/sample/popup-takeover/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-personalize-sample/sc-popup-takeover/",
+      "permanent": true
+    },
+    {
+      "source": "/en/sample/slidebar/",
+      "destination": "https://www.haramizu.com/en/docs/sitecore/sitecore-personalize-sample/sc-slidebar/",
       "permanent": true
     }
   ]
